@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_AmbientIntensity: 0
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: da37755e9cf8c5f48879e0e5138f968f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09533348, g: 0.04167816, b: 0.044475757, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -349,56 +349,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
-      propertyPath: rotation.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1948637374}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
-      propertyPath: rotation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1948637374}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
-      propertyPath: rotation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdatePosition
       objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
-      propertyPath: rotation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdatePosition
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Ghost, Assembly-CSharp
       objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
-      propertyPath: rotation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Ghost, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: Rotation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512350926, guid: d86c0194214a77d4492e57185820e34f, type: 3}
-      propertyPath: rotation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7053899757995067980, guid: d86c0194214a77d4492e57185820e34f, type: 3}
@@ -500,8 +476,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1ca648ec328c040974181ee3ef8822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 1777804948}
-  Distance: 4
+  playerTransform: {fileID: 1777804948}
+  distance: 4
+  maxPosAngle: 30
+  maxNegAngle: 15
 --- !u!1001 &6434831200665104237
 PrefabInstance:
   m_ObjectHideFlags: 0

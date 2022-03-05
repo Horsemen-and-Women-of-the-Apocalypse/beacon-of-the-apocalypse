@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9ce7720ff34fa8bb19c0dac9e91c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialPosition: {x: 0, y: 1.6, z: 0}
+  initialPosition: {x: 0, y: 1.6, z: 0}
 --- !u!1 &7053899757209879797
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 7053899758272515581}
   - component: {fileID: 7053899758272515580}
   - component: {fileID: 7053899758272515523}
-  - component: {fileID: 1512350926}
+  - component: {fileID: 221944840016603802}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
---- !u!114 &1512350926
+--- !u!114 &221944840016603802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7053899758272515521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b7d92a6fc19d4429edc4073d15b2c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c994afa2918415885ea4a87f420196f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Rotation:

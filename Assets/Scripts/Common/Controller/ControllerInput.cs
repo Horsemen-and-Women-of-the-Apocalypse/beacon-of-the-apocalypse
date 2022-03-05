@@ -1,35 +1,31 @@
-using System.Collections;
+#nullable enable
+
 using System.Collections.Generic;
-using System.Linq;
+using Common.Controller;
 using UnityEngine;
 using UnityEngine.XR;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 /// <summary>
 /// Event describing the rotation of the controller
 /// </summary>
 [System.Serializable]
-public class RotationEvent : UnityEvent<Quaternion> {  }
+public class RotationEvent : UnityEvent<Quaternion> { }
 
 /// <summary>
 /// Component exposing inputs of the Pico controller
 /// </summary>
-public class PicoController : MonoBehaviour {
-    
-	private static readonly IReadOnlyList<InputFeatureUsage<Quaternion>> QuaternionFeatures  = new List<InputFeatureUsage<Quaternion>>(new [] { CommonUsages.deviceRotation });
-	private static readonly IReadOnlyList<InputFeatureUsage<bool>> BooleanFeatures = new List<InputFeatureUsage<bool>>(new []{ CommonUsages.triggerButton });
-
+public class ControllerInput : MonoBehaviour {
     /// <summary>
     /// Event notifying controller rotation
     /// </summary>
-	public RotationEvent Rotation;
+    public RotationEvent Rotation;
 
-	private InputDevice? _device = null;
+    private InputDevice? _controller;
 
     void Start() {
         // Register connected devices
-        List<InputDevice> devices = new List<InputDevice>();
+        var devices = new List<InputDevice>();
         InputDevices.GetDevices(devices);
         foreach (var device in devices) {
             OnDeviceConnected(device);
@@ -47,28 +43,28 @@ public class PicoController : MonoBehaviour {
     }
 
     void Update() {
-		// Check if the controller is detected
-        if (_device is null) {
+        // Check if the controller is detected
+        if (!_controller.HasValue) {
             return;
         }
-        InputDevice device = _device.Value;
-        
+
+        var controller = _controller.Value;
+
         // Notify rotation
-        if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out var rot)) {
+        if (controller.TryGetFeatureValue(CommonUsages.deviceRotation, out var rot)) {
             Rotation.Invoke(rot);
         }
     }
 
     private void OnDeviceConnected(InputDevice device) {
-        // Check if device meets the requirements
-        if (QuaternionFeatures.All(f => device.TryGetFeatureValue(f, out var _)) && BooleanFeatures.All(f => device.TryGetFeatureValue(f, out var _))) {
-            _device = device;
+        if (PicoController.IsController(device)) {
+            _controller = device;
         }
     }
 
     private void OnDeviceDisconnected(InputDevice device) {
-        if (_device == device) {
-            _device = null;
+        if (_controller == device) {
+            _controller = null;
         }
     }
 }

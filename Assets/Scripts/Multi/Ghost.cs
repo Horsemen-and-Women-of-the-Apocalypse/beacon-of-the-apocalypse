@@ -26,6 +26,14 @@ public class Ghost : MonoBehaviour {
         _medianAngle = maxPosAngle + Mathf.Abs(maxPosAngle - _minAngle) / 2;
     }
 
+    private void Update() {
+        // Ghosts always looks at the player
+        var playerCamera = Camera.main;
+        if (playerCamera != null) {
+            transform.LookAt(playerCamera.transform);
+        }
+    }
+
     /// <summary>
     /// Update the position of the ghost based on the rotation of the controller
     /// </summary>

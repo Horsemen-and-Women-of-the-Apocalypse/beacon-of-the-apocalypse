@@ -17,7 +17,7 @@ namespace Common {
             objectTransform.LookAt(playerCamera.transform);
 
             // Keep only rotation on Y axis
-            objectTransform.rotation = Quaternion.Euler(0, objectTransform.rotation.eulerAngles.y, 0);
+            objectTransform.localRotation = Quaternion.Euler(0, objectTransform.localRotation.eulerAngles.y, 0);
         }
     }
 }

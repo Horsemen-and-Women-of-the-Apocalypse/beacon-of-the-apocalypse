@@ -9,12 +9,16 @@ namespace Common.Controller {
 
         private Vector3 _rotation = Vector3.zero;
 
+        private void Start() {
+            transform.localPosition = new Vector3(0.25f, -0.5f);
+        }
+
         private void Update() {
             // Update rotation
             if (Input.GetKey(KeyCode.UpArrow)) {
-                _rotation.x += RotationAnglePerFrame;
-            } else if (Input.GetKey(KeyCode.DownArrow)) {
                 _rotation.x -= RotationAnglePerFrame;
+            } else if (Input.GetKey(KeyCode.DownArrow)) {
+                _rotation.x += RotationAnglePerFrame;
             }
 
             if (Input.GetKey(KeyCode.RightArrow)) {
@@ -24,7 +28,11 @@ namespace Common.Controller {
             }
 
             // Notify rotation
-            Rotation.Invoke(Quaternion.Euler(_rotation));
+            var rotationAsQuaternion = Quaternion.Euler(_rotation);
+            Rotation.Invoke(rotationAsQuaternion);
+            
+            // Update object's rotation
+            transform.localRotation = rotationAsQuaternion;
         }
     }
 }

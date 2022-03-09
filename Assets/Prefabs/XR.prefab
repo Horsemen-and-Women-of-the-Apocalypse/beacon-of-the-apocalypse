@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 7053899756639607023}
   - component: {fileID: 7053899756639607022}
   - component: {fileID: 7053899756639607017}
+  - component: {fileID: 3947713717692179785}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -87,7 +88,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -146,6 +147,18 @@ MonoBehaviour:
   m_TrackingType: 0
   m_UpdateType: 0
   m_UseRelativeTransform: 0
+--- !u!114 &3947713717692179785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053899756639607021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9ce7720ff34fa8bb19c0dac9e91c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7053899756896500454
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7053899756896500455}
+  - component: {fileID: 6023274947402219981}
   m_Layer: 0
   m_Name: Camera Offset
   m_TagString: Untagged
@@ -178,6 +192,19 @@ Transform:
   m_Father: {fileID: 7053899757209879792}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6023274947402219981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053899756896500454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ba1db6d14149c7a687dfbfa70d81ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPosition: {x: 0, y: 1.6, z: 0}
 --- !u!1 &7053899757209879797
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +369,8 @@ Canvas:
   m_GameObject: {fileID: 7053899757408776379}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 7053899756639607023}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -411,6 +438,7 @@ GameObject:
   - component: {fileID: 7053899758272515581}
   - component: {fileID: 7053899758272515580}
   - component: {fileID: 7053899758272515523}
+  - component: {fileID: 221944840016603802}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -736,3 +764,18 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
+--- !u!114 &221944840016603802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053899758272515521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c994afa2918415885ea4a87f420196f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rotation:
+    m_PersistentCalls:
+      m_Calls: []

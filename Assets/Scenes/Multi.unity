@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fd0fc4b53340879b3db2dc5bcb9d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashlight: {fileID: 1094506697}
 --- !u!1 &858239167
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +663,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1456208647
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUps:
-  - {fileID: 2555212778194651855, guid: 7bc189b82ddf6a04c8e51fbee542a8de, type: 3}
+  - {fileID: 8232795975760285767, guid: 8531f9fcbdaeaf049a7314e56bcc319a, type: 3}
 --- !u!114 &-606573573284532152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timing: 3
+  killValue: 5
 --- !u!1001 &5121310866590445082
 PrefabInstance:
   m_ObjectHideFlags: 0

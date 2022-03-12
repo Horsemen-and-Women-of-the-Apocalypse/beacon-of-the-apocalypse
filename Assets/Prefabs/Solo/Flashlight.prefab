@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7803090159246582360}
   - component: {fileID: 1443773064640743881}
   - component: {fileID: 5882740741618305321}
+  - component: {fileID: 6683295993811278662}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -108,6 +109,32 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6683295993811278662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120571256894816709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521920d05534448c9c27aacd3be221d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batteryDecreaseTickFrequency: 10
+  batteryDecreasePerTick: 5
+  flashlightCollider: {fileID: 5882740741618305321}
+  spotlightPercentage: 33
+  flashlightLight: {fileID: 1443773064640743881}
+  onItemCatching:
+    m_PersistentCalls:
+      m_Calls: []
+  onBatteryDecrease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3066422069489360701
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,28 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using Common;
 using UnityEngine;
-using System.Timers;
 
 public class GhostManager : MonoBehaviour, ITargetable {
 
     public int timing = 3;
 
-    private Timer timer;
+    public int killValue = 5;
+
+    private IEnumerator kill;
+
+    void Start()
+    {
+        kill = Kill();
+    }
 
     public void OnEnter() {
-        timer = new Timer(timing * 1000);
-        timer.Elapsed += OnTimedEvent;
-        timer.AutoReset = false;
-        timer.Enabled = true;
+        StartCoroutine(kill);
     }
 
     public void OnExit() {
-        timer.Stop();
+        StopCoroutine(kill);
     }
 
-    private static void OnTimedEvent(object source, ElapsedEventArgs e)
+    private IEnumerator Kill()
     {
-        Debug.Log("GhostCatched");
-        GameObject.Destroy(gameObject);
+        yield return new WaitForSeconds(timing);
+
+        GameObject.Find("Environment").GetComponent<ScoreManager>().Add(killValue);
+
+        Destroy(gameObject);
     }
 }

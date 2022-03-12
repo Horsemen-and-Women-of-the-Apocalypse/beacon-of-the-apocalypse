@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 104018227}
   m_Layer: 0
   m_Name: Ghosts
-  m_TagString: Untagged
+  m_TagString: GhostList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,6 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1999018077}
+  - component: {fileID: 1999018078}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -394,3 +395,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1999018078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999018076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052a5507bf3f4dd41bfd1140a8c188b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

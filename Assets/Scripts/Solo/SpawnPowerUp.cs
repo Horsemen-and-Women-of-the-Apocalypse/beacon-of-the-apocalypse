@@ -17,7 +17,10 @@ public class SpawnPowerUp : MonoBehaviour
         GameObject spawnablePowerUp = powerUps[choice];
 
         var instance = Instantiate(spawnablePowerUp, transform);
-        instance.transform.SetParent(GameObject.Find("/Entities/Ghosts").transform);
+
+        GameObject items = GameObject.Find("Items");
+
+        instance.transform.SetParent(items.transform);
     }
 
     int getRandom(int min, int max)

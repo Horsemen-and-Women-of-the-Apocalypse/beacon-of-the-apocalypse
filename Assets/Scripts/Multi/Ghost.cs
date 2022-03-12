@@ -34,6 +34,9 @@ namespace Multi {
 
         public WinEvent onWin;
 
+        [Tooltip("Sound that will be played when the ghost is being captured")]
+        public AudioSource pannicSound;
+
         private Coroutine? _deathCoroutine;
         private readonly float _medianAngle;
         private readonly float _minAngle;
@@ -68,7 +71,8 @@ namespace Multi {
         public void OnEnter() {
             _deathCoroutine = StartCoroutine(Die());
             
-            // TODO: Play panic animation/sound
+            // Play panic animation/sound
+            pannicSound.Play();
         }
 
         public void OnExit() {
@@ -77,7 +81,8 @@ namespace Multi {
                 StopCoroutine(_deathCoroutine);
             }
             
-            // TODO: Cancel panic animation/sound
+            // Cancel panic animation/sound
+            pannicSound.Stop();
         }
 
         // TODO: Doc

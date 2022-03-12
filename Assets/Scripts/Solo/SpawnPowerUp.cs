@@ -10,7 +10,6 @@ public class SpawnPowerUp : MonoBehaviour
     private static RandomNumberGenerator random = RandomNumberGenerator.Create();
 
     public List<GameObject> powerUps;
-    public GameObject parent;
 
     void OnDestroy()
     {
@@ -18,7 +17,10 @@ public class SpawnPowerUp : MonoBehaviour
         GameObject spawnablePowerUp = powerUps[choice];
 
         var instance = Instantiate(spawnablePowerUp, transform);
-        instance.transform.SetParent(parent.transform);
+
+        GameObject items = GameObject.Find("Items");
+
+        instance.transform.SetParent(items.transform);
     }
 
     int getRandom(int min, int max)

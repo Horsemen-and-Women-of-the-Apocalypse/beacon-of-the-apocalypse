@@ -12,12 +12,6 @@ public class SpawnPowerUp : MonoBehaviour
     public List<GameObject> powerUps;
     public GameObject parent;
 
-    // Keep to test
-    void Start()
-    {
-        Destroy(gameObject);
-    }
-
     void OnDestroy()
     {
         int choice = getRandom(0, powerUps.Count - 1);

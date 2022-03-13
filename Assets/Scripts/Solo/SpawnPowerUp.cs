@@ -20,7 +20,12 @@ public class SpawnPowerUp : MonoBehaviour
 
         GameObject items = GameObject.Find("Items");
 
-        instance.transform.SetParent(items.transform);
+        if(items != null)
+        {
+            instance.transform.SetParent(items.transform);
+        }
+
+        
     }
 
     int getRandom(int min, int max)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Common.Item;
+using Common;
 
 public class Inventory : MonoBehaviour
 {
@@ -10,23 +11,44 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         inventory = new AItem[3];
+
+        StartCoroutine(Init());
     }
 
-    public void Catch(AItem item)
+    IEnumerator Init()
     {
-        var type = item.GetType();
 
-        Debug.Log(type + " catched");
+        yield return new WaitForSeconds(1);
 
-        if (type is BatteryItem)
+        GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>()?.onItemCatching.AddListener(Catch);
+
+        Debug.Log(GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>());
+
+        yield return null;
+    }
+
+    public void Catch(IList<AItem> items)
+    {
+
+        foreach(AItem item in items)
         {
-            inventory[0] = item;
-        } else if(type is FlashItem)
-        {
-            inventory[1] = item;
-        } else
-        {
-            inventory[2] = item;
+            var type = item.GetType();     
+
+            if (type is BatteryItem)
+            {
+                inventory[0] = item;
+                Destroy(item);
+            }
+            else if (type is FlashItem)
+            {
+                inventory[1] = item;
+                Destroy(item);
+            }
+            else
+            {
+                inventory[2] = item;
+                Destroy(item);
+            }
         }
     }
 

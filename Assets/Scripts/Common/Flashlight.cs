@@ -67,6 +67,11 @@ namespace Common {
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
 
+        public void TurnOnOff()
+        {
+            flashlightLight.enabled = !flashlightLight.enabled;
+        }
+
         private void Start() {
             // Adjust collider to fit the light
             var lightRange = flashlightLight.range;

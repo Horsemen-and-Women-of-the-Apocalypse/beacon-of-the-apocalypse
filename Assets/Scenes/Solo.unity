@@ -185,6 +185,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 924751812419987721, guid: 35b599428f9842741aa0d0c1e09c8b99, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4760059872256808012, guid: 88a8b751251bb6742808bfa6d06c3ba0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -261,10 +265,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.27284968, y: 0.79446524, z: 0.5656295}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1323455940}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1212315674
 GameObject:
@@ -296,13 +299,8 @@ Transform:
   - {fileID: 1927879329}
   - {fileID: 104018226}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1323455940 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 924751812419987721, guid: 35b599428f9842741aa0d0c1e09c8b99, type: 3}
-  m_PrefabInstance: {fileID: 924374213}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1512350924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,6 +308,102 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1604738434}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1604738434}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnOnOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CatchItems
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FlashLightController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FlashLightController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Menu.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: Trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7053899757995067980, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: m_Name
       value: XR
@@ -484,6 +578,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 052a5507bf3f4dd41bfd1140a8c188b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1604738427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7053899758272515521, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+  m_PrefabInstance: {fileID: 1512350924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1604738434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604738427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56c06ae7c3662243a750d6ea2c26e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1604738435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604738427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aae9b3dc545af444801704db893a0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1927879328

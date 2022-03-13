@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Common.Controller;
 using Common.Item;
 using Common;
 
@@ -52,14 +53,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Use(int index)
+    public void Use(ETouchPadButton button)
     {
-        switch(index)
+        switch (button)
         {
-            case 0: inventory[0] = null; break; // Battery used
-            case 1: inventory[1] = null; break; // Flash used
-            case 2: inventory[2] = null; break; // Sonar used
-            default: break;
+            case ETouchPadButton.Top: inventory[0] = null; break; // Battery used
+            case ETouchPadButton.Right: inventory[1] = null; break; // Flash used
+            case ETouchPadButton.Left: inventory[2] = null; break; //  Sonar used    
         }
     }
 }

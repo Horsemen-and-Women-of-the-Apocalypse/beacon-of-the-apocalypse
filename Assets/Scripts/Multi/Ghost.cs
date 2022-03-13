@@ -3,11 +3,14 @@
 using System;
 using System.Collections;
 using Common;
+using Common.Audio;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Multi {
-    // TODO: Doc
+    /// <summary>
+    /// Event describing the win of the game
+    /// </summary>
     [Serializable]
     public class WinEvent : UnityEvent { }
 
@@ -36,17 +39,24 @@ namespace Multi {
 
         [Tooltip("Played when the ghost is being captured")]
         public AudioSource pannicSound;
-     [Tooltip("Played when the ghost diee")]
-        public AudioSource dieSound;
+
+        [Tooltip("Played when the ghost die")] public AudioSource dieSound;
+
         private Coroutine? _deathCoroutine;
-        private Coroutine? _pannicSoundFadeInCoroutine;
-        private Coroutine? _pannicSoundFadeOuiCoroutine;
+        private Coroutine? _panicSoundFadeInCoroutine;
+        private Coroutine? _panicSoundFadeOutCoroutine;
         private readonly float _medianAngle;
         private readonly float _minAngle;
+        private bool _immune = true;
 
         Ghost() {
             _minAngle = 360 - maxNegAngle;
             _medianAngle = maxPosAngle + Mathf.Abs(maxPosAngle - _minAngle) / 2;
+        }
+
+        private void Start() {
+            // Remove immunity
+            StartCoroutine(RemoveImmunity());
         }
 
         private void Update() {
@@ -72,29 +82,44 @@ namespace Multi {
         }
 
         public void OnEnter() {
-            _deathCoroutine = StartCoroutine(Die());
-            
-            // Play panic animation/sound
-            if (_pannicSoundFadeOuiCoroutine != null) {
-                StopCoroutine(_pannicSoundFadeOuiCoroutine);
+            // Do nothing if ghost is immune
+            if (_immune) {
+                return;
             }
-            _pannicSoundFadeInCoroutine = StartCoroutine (Common.Audio.AudioFadeOut.FadeIn (pannicSound, 0.3f));
+
+            _deathCoroutine = StartCoroutine(Die());
+
+            // Play panic animation/sound
+            if (_panicSoundFadeOutCoroutine != null) {
+                StopCoroutine(_panicSoundFadeOutCoroutine);
+            }
+
+            _panicSoundFadeInCoroutine = StartCoroutine(AudioFadeOut.FadeIn(pannicSound, 0.3f));
         }
 
         public void OnExit() {
+            // Do nothing if ghost is immune
+            if (_immune) {
+                return;
+            }
+
             // Cancel death
             if (_deathCoroutine != null) {
                 StopCoroutine(_deathCoroutine);
             }
-            
+
             // Cancel panic animation/sound
-            if (_pannicSoundFadeInCoroutine != null) {
-                StopCoroutine(_pannicSoundFadeInCoroutine);
+            if (_panicSoundFadeInCoroutine != null) {
+                StopCoroutine(_panicSoundFadeInCoroutine);
             }
-            StartCoroutine (Common.Audio.AudioFadeOut.FadeOut (pannicSound, 0.1f));
+
+            _panicSoundFadeOutCoroutine = StartCoroutine(AudioFadeOut.FadeOut(pannicSound, 0.1f));
         }
 
-        // TODO: Doc
+        /// <summary>
+        /// Coroutine killing the ghost after <see cref="lifetime"/> second(s)
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator Die() {
             // Wait
             yield return new WaitForSeconds(lifetime);
@@ -102,12 +127,22 @@ namespace Multi {
             // Play an animation/sound ???
             pannicSound.Stop();
             AudioSource.PlayClipAtPoint(dieSound.clip, transform.position);
-    
+
             // Destroy ghost
             Destroy(gameObject);
 
             // Send win
             onWin.Invoke();
+        }
+
+        /// <summary>
+        /// Coroutine removing the immunity after 2 seconds
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator RemoveImmunity() {
+            yield return new WaitForSeconds(2);
+
+            _immune = false;
         }
     }
 }

@@ -334,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 221944840016603802, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: TouchPad.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -613,6 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56c06ae7c3662243a750d6ea2c26e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 1604738435}
 --- !u!114 &1604738435
 MonoBehaviour:
   m_ObjectHideFlags: 0

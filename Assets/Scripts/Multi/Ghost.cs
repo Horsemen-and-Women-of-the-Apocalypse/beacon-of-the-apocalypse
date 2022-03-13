@@ -3,11 +3,14 @@
 using System;
 using System.Collections;
 using Common;
+using Common.Audio;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Multi {
-    // TODO: Doc
+    /// <summary>
+    /// Event describing the win of the game
+    /// </summary>
     [Serializable]
     public class WinEvent : UnityEvent { }
 
@@ -78,7 +81,7 @@ namespace Multi {
             if (_pannicSoundFadeOuiCoroutine != null) {
                 StopCoroutine(_pannicSoundFadeOuiCoroutine);
             }
-            _pannicSoundFadeInCoroutine = StartCoroutine (Common.Audio.AudioFadeOut.FadeIn (pannicSound, 0.3f));
+            _pannicSoundFadeInCoroutine = StartCoroutine (AudioFadeOut.FadeIn (pannicSound, 0.3f));
         }
 
         public void OnExit() {
@@ -91,10 +94,13 @@ namespace Multi {
             if (_pannicSoundFadeInCoroutine != null) {
                 StopCoroutine(_pannicSoundFadeInCoroutine);
             }
-            StartCoroutine (Common.Audio.AudioFadeOut.FadeOut (pannicSound, 0.1f));
+            StartCoroutine (AudioFadeOut.FadeOut (pannicSound, 0.1f));
         }
 
-        // TODO: Doc
+       /// <summary>
+       /// Coroutine killing the ghost after <see cref="lifetime"/> second(s)
+       /// </summary>
+       /// <returns></returns>
         private IEnumerator Die() {
             // Wait
             yield return new WaitForSeconds(lifetime);

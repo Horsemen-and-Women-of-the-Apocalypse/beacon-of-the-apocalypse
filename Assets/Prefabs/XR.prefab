@@ -799,3 +799,12 @@ MonoBehaviour:
   Rotation:
     m_PersistentCalls:
       m_Calls: []
+  Trigger:
+    m_PersistentCalls:
+      m_Calls: []
+  TouchPad:
+    m_PersistentCalls:
+      m_Calls: []
+  Menu:
+    m_PersistentCalls:
+      m_Calls: []

@@ -36,7 +36,10 @@ namespace Common {
             StartCoroutine(SpawnObjects());
         }
 
-        // TODO: Doc
+        /// <summary>
+        /// Coroutine spawning objects
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator SpawnObjects() {
             var bytes = new byte[2];
 

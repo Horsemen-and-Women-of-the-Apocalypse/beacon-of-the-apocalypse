@@ -38,7 +38,7 @@ namespace Common {
         /// <summary>
         /// Level of battery considered as critical
         /// </summary>
-        public const float CriticalBatteryLevel = 25;
+        public const float CriticalBatteryLevel = 100;
 
         [Tooltip("Frequency of battery level decrease in seconds")]
         public ushort batteryDecreaseTickFrequency = 10;
@@ -61,6 +61,8 @@ namespace Common {
         public GameOverEvent onGameOver;
 
         public AudioSource catchSound;
+        [Tooltip("Played when the flishlight glitch a little")] public AudioSource defectingflashlightSound;
+        [Tooltip("Played when the flishlight is turned off")] public AudioSource flashlightOffSound;
 
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
@@ -143,6 +145,7 @@ namespace Common {
             // Turn off the light & send game over
             if (level <= 0) {
                 flashlightLight.intensity = 0;
+                flashlightOffSound.Play();
                 onGameOver.Invoke();
                 return level;
             }
@@ -199,17 +202,23 @@ namespace Common {
         private IEnumerator Blink() {
             var intensity = flashlightLight.intensity;
 
-            flashlightLight.intensity = 0;
-            yield return new WaitForSeconds(0.1f);
+            // Make the light blink a random amount of times
+            var nbBlink = UnityEngine.Random.Range(2, 7);
+            for (var i = 0; i < nbBlink; i++) {
+                // Turn off
+                flashlightLight.intensity = 0;
+                defectingflashlightSound.Play();
 
-            flashlightLight.intensity = intensity;
-            yield return new WaitForSeconds(0.1f);
+                // Wait a bit
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0.05f, 0.15f));
 
-            flashlightLight.intensity = 0;
-            yield return new WaitForSeconds(0.5f);
-
-            // Restore intensity
-            flashlightLight.intensity = intensity;
+                // Restore intensity
+                flashlightLight.intensity = intensity;
+                defectingflashlightSound.Play();
+                
+                // Wait a bit
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0.02f, 0.05f));
+            }
         }
     }
 

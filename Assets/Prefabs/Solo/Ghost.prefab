@@ -79,6 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUps:
   - {fileID: 8232795975760285767, guid: 8531f9fcbdaeaf049a7314e56bcc319a, type: 3}
+  - {fileID: 8232795975760285767, guid: 53fd0140930b54549861afb8f349c95c, type: 3}
+  - {fileID: 8232795975760285767, guid: 2427afc4e55b004478bc8da5ef8a54ea, type: 3}
 --- !u!114 &-606573573284532152
 MonoBehaviour:
   m_ObjectHideFlags: 0

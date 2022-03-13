@@ -13,6 +13,10 @@ public class SceneChanger : MonoBehaviour {
     public void Menu() {
         SceneManager.LoadScene("Menu");
     }
+    
+    public void GameOver() {
+        SceneManager.LoadScene("Game Over");
+    }
 
     public void ExitGame() {
 #if UNITY_EDITOR

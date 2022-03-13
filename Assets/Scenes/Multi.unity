@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 1094506698}
   - component: {fileID: 1094506699}
   - component: {fileID: 1094506700}
+  - component: {fileID: 1094506701}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -803,7 +804,19 @@ MonoBehaviour:
         m_CallState: 2
   onGameOver:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1094506701}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   catchSound: {fileID: 1094506698}
   defectingflashlightSound: {fileID: 1094506699}
   flashlightOffSound: {fileID: 1094506700}
@@ -1095,6 +1108,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1094506701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094506693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2853a22fd377c1e46a7b92a6721b3ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1126407257
 GameObject:
   m_ObjectHideFlags: 0

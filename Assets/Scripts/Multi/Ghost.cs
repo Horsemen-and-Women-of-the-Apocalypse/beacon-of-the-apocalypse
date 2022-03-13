@@ -3,11 +3,14 @@
 using System;
 using System.Collections;
 using Common;
+using Common.Audio;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Multi {
-    // TODO: Doc
+    /// <summary>
+    /// Event describing the win of the game
+    /// </summary>
     [Serializable]
     public class WinEvent : UnityEvent { }
 
@@ -34,10 +37,13 @@ namespace Multi {
 
         public WinEvent onWin;
 
-        [Tooltip("Sound that will be played when the ghost is being captured")]
+        [Tooltip("Played when the ghost is being captured")]
         public AudioSource pannicSound;
-
+     [Tooltip("Played when the ghost diee")]
+        public AudioSource dieSound;
         private Coroutine? _deathCoroutine;
+        private Coroutine? _pannicSoundFadeInCoroutine;
+        private Coroutine? _pannicSoundFadeOuiCoroutine;
         private readonly float _medianAngle;
         private readonly float _minAngle;
 
@@ -72,7 +78,10 @@ namespace Multi {
             _deathCoroutine = StartCoroutine(Die());
             
             // Play panic animation/sound
-            pannicSound.Play();
+            if (_pannicSoundFadeOuiCoroutine != null) {
+                StopCoroutine(_pannicSoundFadeOuiCoroutine);
+            }
+            _pannicSoundFadeInCoroutine = StartCoroutine (AudioFadeOut.FadeIn (pannicSound, 0.3f));
         }
 
         public void OnExit() {
@@ -82,16 +91,24 @@ namespace Multi {
             }
             
             // Cancel panic animation/sound
-            pannicSound.Stop();
+            if (_pannicSoundFadeInCoroutine != null) {
+                StopCoroutine(_pannicSoundFadeInCoroutine);
+            }
+            StartCoroutine (AudioFadeOut.FadeOut (pannicSound, 0.1f));
         }
 
-        // TODO: Doc
+       /// <summary>
+       /// Coroutine killing the ghost after <see cref="lifetime"/> second(s)
+       /// </summary>
+       /// <returns></returns>
         private IEnumerator Die() {
             // Wait
             yield return new WaitForSeconds(lifetime);
 
-            // TODO: Play an animation/sound ???
-
+            // Play an animation/sound ???
+            pannicSound.Stop();
+            AudioSource.PlayClipAtPoint(dieSound.clip, transform.position);
+    
             // Destroy ghost
             Destroy(gameObject);
 

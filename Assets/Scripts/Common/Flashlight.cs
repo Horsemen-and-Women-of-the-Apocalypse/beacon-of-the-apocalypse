@@ -56,9 +56,11 @@ namespace Common {
 
         public ItemsCatchingEvent onItemCatching;
 
-        public RemainingBatteryPercentage onBatteryDecrease;
+        public RemainingBatteryPercentage onBatteryChange;
 
         public GameOverEvent onGameOver;
+
+        public AudioSource catchSound;
 
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
@@ -113,11 +115,13 @@ namespace Common {
             foreach (var idAndObject in new Dictionary<int, GameObject>(_inRangeObjectById)) {
                 var @object = idAndObject.Value;
 
-                // Add item if it's alive or remove it
+                // Remove destroyed objects & add item
                 if (@object == null) {
                     _inRangeObjectById.Remove(idAndObject.Key);
                 } else if (@object.TryGetComponent<AItem>(out var item)) {
                     items.Add(item);
+                    // Play sound
+                    if (catchSound != null) catchSound.Play();
                 }
             }
 
@@ -167,7 +171,7 @@ namespace Common {
                 yield return new WaitForSeconds(batteryDecreaseTickFrequency);
 
                 // Decrease and notify battery level
-                onBatteryDecrease.Invoke(Decrease());
+                onBatteryChange.Invoke(Decrease());
             }
         }
 
@@ -184,7 +188,7 @@ namespace Common {
             }
 
             // Use item
-            onBatteryDecrease.Invoke(Increase(item.level));
+            onBatteryChange.Invoke(Increase(item.level));
             Destroy(itemGameObject);
         }
 

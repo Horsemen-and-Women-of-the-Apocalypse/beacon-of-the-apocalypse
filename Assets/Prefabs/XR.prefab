@@ -292,7 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5279688d599748d3bf5e7b3a3889e948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longPressDuration: 2
   onButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  onButtonLongPressed:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7053899757408776379

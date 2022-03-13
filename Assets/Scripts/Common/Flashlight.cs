@@ -60,6 +60,8 @@ namespace Common {
 
         public GameOverEvent onGameOver;
 
+        public AudioSource catchSound;
+
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
 
@@ -118,6 +120,8 @@ namespace Common {
                     _inRangeObjectById.Remove(idAndObject.Key);
                 } else if (@object.TryGetComponent<AItem>(out var item)) {
                     items.Add(item);
+                    // Play sound
+                    if (catchSound != null) catchSound.Play();
                 }
             }
 

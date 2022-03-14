@@ -42,6 +42,9 @@ namespace Multi {
 
         [Tooltip("Played when the ghost die")] public AudioSource dieSound;
 
+        public float smoothTime = 0.1F;
+        private Vector3 velocity = Vector3.zero;
+
         private Coroutine? _deathCoroutine;
         private Coroutine? _panicSoundFadeInCoroutine;
         private Coroutine? _panicSoundFadeOutCoroutine;
@@ -63,7 +66,6 @@ namespace Multi {
             // Ghosts always looks at the player
             var playerCamera = Camera.main;
             if (playerCamera != null) {
-                transform.LookAt(playerCamera.transform);
             }
         }
 
@@ -77,8 +79,15 @@ namespace Multi {
             var xAngles = angles.x;
             xAngles = xAngles >= _medianAngle ? Mathf.Clamp(xAngles, _minAngle, 359.999f) : Mathf.Clamp(xAngles, 0, maxPosAngle);
 
-            // Update ghost's position
-            transform.position = playerTransform.position - Quaternion.Euler(xAngles, angles.y, 0) * InitialControllerDirection * distance;
+            // Update ghost's rotation and pos
+            var targetPosition = playerTransform.position - Quaternion.Euler(xAngles, angles.y, 0) * InitialControllerDirection * distance;
+
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+       
+            var targetRotation = Quaternion.LookRotation(Vector3.Lerp(targetPosition, Camera.main.transform.position, 0.5f) - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
+
+
         }
 
         public void OnEnter() {

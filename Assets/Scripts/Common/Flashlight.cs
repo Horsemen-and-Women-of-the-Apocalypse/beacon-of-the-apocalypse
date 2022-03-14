@@ -71,10 +71,7 @@ namespace Common {
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
 
-        public void TurnOnOff()
-        {
-            flashlightLight.enabled = !flashlightLight.enabled;
-        }
+        private IEnumerator consume;
 
         private void Start() {
             // Adjust collider to fit the light
@@ -85,7 +82,22 @@ namespace Common {
             flashlightCollider.direction = 2;
 
             // Start battery level decrease
-            StartCoroutine(Consume());
+
+            consume = Consume();
+
+            StartCoroutine(consume);
+        }
+
+        public void TurnOnOff()
+        {
+            flashlightLight.enabled = !flashlightLight.enabled;
+            if(flashlightLight.enabled)
+            {
+                StartCoroutine(consume);
+            } else
+            {
+                StopCoroutine(consume);
+            }
         }
 
         private void OnTriggerEnter(Collider other) {

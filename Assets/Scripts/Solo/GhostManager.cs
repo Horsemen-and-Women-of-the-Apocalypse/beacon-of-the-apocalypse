@@ -5,19 +5,17 @@ using Common;
 using UnityEngine;
 
 public class GhostManager : MonoBehaviour, ITargetable {
-
     public int timing = 3;
     public int killValue = 5;
-    public float speed = 10f;
+    public float speed = 0.5f;
 
-    public float minX, minY, minZ = 0f;
-    public float maxX, maxY, maxZ = 100f;
+    public int minX = -5, minY = 0, minZ = -5;
+    public int maxX = 5, maxY = 5, maxZ = 5;
 
     private IEnumerator kill;
     private IEnumerator move;
 
-    void Start()
-    {
+    void Start() {
         kill = Kill();
         move = Move();
 
@@ -41,23 +39,25 @@ public class GhostManager : MonoBehaviour, ITargetable {
     {
         while(true)
         {
+            yield return new WaitForSeconds(3);
+
             float xBase = transform.position.x;
             float yBase = transform.position.y;
             float zBase = transform.position.z;
 
             System.Random random = new System.Random();
 
-            int x = random.Next(-50, 50);
-            int y = random.Next(-50, 50);
-            int z = random.Next(-50, 50);
+            float x = random.Next(minX, maxX);
+            float y = random.Next(minY, maxY);
+            float z = random.Next(minZ, maxZ);
+            
+            transform.position += new Vector3(x, y, z);
 
-            float newX = x * speed * Time.deltaTime > minX && x * speed * Time.deltaTime < maxX ? x * speed * Time.deltaTime : xBase;
-            float newY = y * speed * Time.deltaTime > minY && y * speed * Time.deltaTime < maxY ? y * speed * Time.deltaTime : yBase;
-            float newZ = z * speed * Time.deltaTime > minZ && x * speed * Time.deltaTime < maxZ ? z * speed * Time.deltaTime : zBase;
-
-            transform.position = transform.position + new Vector3(newX, newY, 0);
-
-            yield return new WaitForSeconds(0.5f);
+            var playerCamera = Camera.main;
+            if (playerCamera != null)
+            {
+                transform.LookAt(playerCamera.transform);
+            }
         }   
 
         yield return null;

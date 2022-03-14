@@ -39,7 +39,7 @@ namespace Common {
             if (Input.GetKeyDown(ButtonKeyCode)) {
                 onButtonPressed.Invoke();
                 _keyDownTimeStep ??= Time.time;
-                
+
                 // TODO: Display some feedback ?
             } else if (Input.GetKeyUp(ButtonKeyCode)) {
                 if (_keyDownTimeStep == null || Time.time - _keyDownTimeStep.Value < longPressDuration) {

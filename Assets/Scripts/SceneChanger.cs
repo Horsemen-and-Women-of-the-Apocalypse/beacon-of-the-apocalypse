@@ -2,8 +2,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
+
+    public Animator animator;
+    private string sceneToLoad;
+    private void _FateToScene(string sceneName)
+    {
+        animator.SetTrigger("Fade Out Trigger");
+        sceneToLoad = sceneName;
+    }
+
+    private void OnFadeComplete()
+    {
+        SceneManager.LoadScene(sceneToLoad);
+    }
+
     public void Solo() {
-         SceneManager.LoadScene("Solo");
+        SceneManager.LoadScene("Solo");
     }
 
     public void Multi() {
@@ -11,7 +25,11 @@ public class SceneChanger : MonoBehaviour {
     }
 
     public void Menu() {
-        SceneManager.LoadScene("Menu");
+        this._FateToScene("Menu");
+    }
+    
+    public void GameOver() {
+        SceneManager.LoadScene("Game Over");
     }
 
     public void ExitGame() {

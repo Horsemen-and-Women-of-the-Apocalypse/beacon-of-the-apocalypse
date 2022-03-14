@@ -61,8 +61,12 @@ namespace Common {
         public GameOverEvent onGameOver;
 
         public AudioSource catchSound;
-        [Tooltip("Played when the flishlight glitch a little")] public AudioSource defectingflashlightSound;
-        [Tooltip("Played when the flishlight is turned off")] public AudioSource flashlightOffSound;
+
+        [Tooltip("Played when the flashlight glitch a little")]
+        public AudioSource defectingflashlightSound;
+
+        [Tooltip("Played when the flashlight is turned off")]
+        public AudioSource flashlightOffSound;
 
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
@@ -180,6 +184,9 @@ namespace Common {
 
                 // Decrease and notify battery level
                 onBatteryChange.Invoke(Decrease());
+#if UNITY_EDITOR
+                Debug.Log($"Battery: {_batteryLevel}%");
+#endif
             }
         }
 
@@ -197,6 +204,9 @@ namespace Common {
 
             // Use item
             onBatteryChange.Invoke(Increase(item.level));
+#if UNITY_EDITOR
+            Debug.Log($"Battery: {_batteryLevel}%");
+#endif
             Destroy(itemGameObject);
         }
 
@@ -213,12 +223,12 @@ namespace Common {
         /// Consume the given flash item
         /// </summary>
         /// <param name="item">Item</param>
-        public void Consume(FlashItem items)
+        public void Consume(FlashItem item)
         {
-            StartCoroutine(Flash());   
+            StartCoroutine(Flash(item));   
         }
 
-        IEnumerator Flash()
+        IEnumerator Flash(AItem item)
         {
             float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
             Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
@@ -230,6 +240,8 @@ namespace Common {
 
             GameObject.Find("Moon Light").GetComponent<Light>().intensity = intensity;
             GameObject.Find("Moon Light").GetComponent<Light>().color = color;
+
+            Destroy(item);
 
         }
 
@@ -253,7 +265,7 @@ namespace Common {
                 // Restore intensity
                 flashlightLight.intensity = intensity;
                 defectingflashlightSound.Play();
-                
+
                 // Wait a bit
                 yield return new WaitForSeconds(UnityEngine.Random.Range(0.02f, 0.05f));
             }

@@ -30,23 +30,33 @@ public class Inventory : MonoBehaviour
 
     public void Catch(IList<AItem> items)
     {
-
-        Debug.Log("Test");
-
         foreach(AItem item in items)
         {
 
             if (item is BatteryItem)
             {
-                inventory[0] = item;
+                Debug.Log("Battery");
+                if (inventory[0] == null)
+                {
+                    inventory[0] = item;
+                    item.gameObject.SetActiveRecursively(false);
+                }
             }
             else if (item is FlashItem)
             {
-                inventory[1] = item;
+                if (inventory[1] == null)
+                {
+                    inventory[1] = item;
+                    item.gameObject.SetActiveRecursively(false);
+                }
             }
             else
             {
-                inventory[2] = item;
+                if (inventory[2] == null)
+                {
+                    inventory[2] = item;
+                    item.gameObject.SetActiveRecursively(false);
+                }
             }
         }
     }
@@ -58,7 +68,7 @@ public class Inventory : MonoBehaviour
             case ETouchPadButton.Top: // Battery used
                 if(inventory[0] != null)
                 {
-                    flashlight.Consume((BatteryItem)inventory[0]);
+                    flashlight.Consume((BatteryItem) inventory[0]);
                     inventory[0] = null;
                 }
                  break; 

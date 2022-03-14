@@ -17,11 +17,15 @@ public class SceneChanger : MonoBehaviour {
     }
 
     public void Solo() {
-        SceneManager.LoadScene("Solo");
+        this._FateToScene("Solo");
     }
 
     public void Multi() {
-        SceneManager.LoadScene("Multi");
+        this._FateToScene("Multi");
+    }
+
+    public void MultiStartup() {
+        this._FateToScene("Multi Startup");
     }
 
     public void Menu() {
@@ -29,7 +33,7 @@ public class SceneChanger : MonoBehaviour {
     }
     
     public void GameOver() {
-        SceneManager.LoadScene("Game Over");
+        this._FateToScene("Game Over");
     }
 
     public void ExitGame() {

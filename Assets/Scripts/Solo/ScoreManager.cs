@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-[Seralizable]
+[Serializable]
 public class WinEvent : UnityEvent<bool> { }
 
 public class ScoreManager : MonoBehaviour {
@@ -24,7 +26,7 @@ public class ScoreManager : MonoBehaviour {
     {
         if(score >= win)
         {
-            winEvent.invoke(true);
+            winEvent.Invoke(true);
         }
     }
 }

@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game over.unity
     guid: 1222f77a550daa04c93d789b1f507b67
+  - enabled: 1
+    path: Assets/Scenes/Multi Startup.unity
+    guid: a7b877d5925cc334aa42f168f4cc53b3
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 3498a99da3b6635448dd46f1b5475ec5
   m_configObjects:
     Unity.XR.PXR.Settings: {fileID: 11400000, guid: 4f20483f267bb8f4ebba19bb076d9b4b, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 041efca5383819e4f9e964eee91087c0, type: 2}

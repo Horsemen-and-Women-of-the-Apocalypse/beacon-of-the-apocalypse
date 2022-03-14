@@ -22,10 +22,17 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public Light cameraLight = null;
 
+    public Flashlight flashlight = null;
+
     /// <summary>
     /// Must be the same as set Skybox
     /// </summary>
-    public Material skybox;
+    private Material _skybox;
+
+    private void Start()
+    {
+        _skybox = RenderSettings.skybox;
+    }
     
     /// <summary>
     /// Method to be given to XRRig OnButtonLongPressed event
@@ -43,14 +50,24 @@ public class PauseMenu : MonoBehaviour
         if (cameraLight) cameraLight.enabled = !cameraLight.enabled;
     }
 
+    private void TurnOnOffFlashlight()
+    {
+        if (!flashlight)
+        {
+            GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>()?.TurnOnOff();
+            return;
+        }
+        flashlight.TurnOnOff();
+    }
+
     /// <summary>
     /// Disable pause and resume game
     /// </summary>
     public void Resume()
     {
         TurnOnOffCameraLight();
-        RenderSettings.skybox = skybox;
-        GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>()?.TurnOnOff();
+        TurnOnOffFlashlight();
+        RenderSettings.skybox = _skybox;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
@@ -62,8 +79,8 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         TurnOnOffCameraLight();
+        TurnOnOffFlashlight();
         RenderSettings.skybox = (null);
-        GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>()?.TurnOnOff();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isGamePaused = true;

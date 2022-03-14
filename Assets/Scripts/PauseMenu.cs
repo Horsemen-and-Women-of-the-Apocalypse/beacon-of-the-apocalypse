@@ -12,14 +12,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
 
     public SceneChanger sceneChanger;
-  
-    
+
+
     /// <summary>
     /// Method to be given to XRRig OnButtonLongPressed event
     /// </summary>
     public void TriggerPause()
     {
-        Debug.Log("PAUSE: " + isGamePaused);
         if (isGamePaused)
             Resume();
         else

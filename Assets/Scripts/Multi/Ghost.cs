@@ -62,13 +62,6 @@ namespace Multi {
             StartCoroutine(RemoveImmunity());
         }
 
-        private void Update() {
-            // Ghosts always looks at the player
-            var playerCamera = Camera.main;
-            if (playerCamera != null) {
-            }
-        }
-
         /// <summary>
         /// Update the position of the ghost based on the rotation of the controller
         /// </summary>
@@ -79,14 +72,18 @@ namespace Multi {
             var xAngles = angles.x;
             xAngles = xAngles >= _medianAngle ? Mathf.Clamp(xAngles, _minAngle, 359.999f) : Mathf.Clamp(xAngles, 0, maxPosAngle);
 
-            // Update ghost's rotation and pos
+            // Update ghost's rotation and position
             var targetPosition = playerTransform.position - Quaternion.Euler(xAngles, angles.y, 0) * InitialControllerDirection * distance;
-
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-       
-            var targetRotation = Quaternion.LookRotation(Vector3.Lerp(targetPosition, Camera.main.transform.position, 0.5f) - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
 
+            // Ghosts always looks at both the player and where its goes
+
+            var playerCamera = Camera.main;
+            if (playerCamera != null)
+            {
+                var targetRotation = Quaternion.LookRotation(Vector3.Lerp(targetPosition, playerCamera.transform.position, 0.5f) - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
+            }
 
         }
 

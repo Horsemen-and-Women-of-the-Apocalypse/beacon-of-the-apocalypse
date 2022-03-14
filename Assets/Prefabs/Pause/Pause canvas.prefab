@@ -134,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6942484407596705550}
   sceneChanger: {fileID: 0}
+  cameraLight: {fileID: 0}
+  skybox: {fileID: 0}
 --- !u!1001 &823183143739955513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,6 +262,10 @@ PrefabInstance:
     - target: {fileID: 7724834978311765559, guid: 60adff15a58152c4fab4fba993886bbd, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874013774040357839, guid: 60adff15a58152c4fab4fba993886bbd, type: 3}
+      propertyPath: m_Intensity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8149576642700641328, guid: 60adff15a58152c4fab4fba993886bbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

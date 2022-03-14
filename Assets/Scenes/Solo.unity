@@ -1083,6 +1083,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6227010123113019192, guid: 88a8b751251bb6742808bfa6d06c3ba0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6416710975766468239, guid: 88a8b751251bb6742808bfa6d06c3ba0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1588,6 +1592,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 823183142996567738, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: skybox
+      value: 
+      objectReference: {fileID: 2100000, guid: da37755e9cf8c5f48879e0e5138f968f, type: 2}
+    - target: {fileID: 823183142996567738, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: cameraLight
+      value: 
+      objectReference: {fileID: 1741404076}
     - target: {fileID: 823183142996567738, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: sceneChanger
       value: 

@@ -690,8 +690,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4
-  m_Range: 10
+  m_Intensity: 3
+  m_Range: 20
   m_SpotAngle: 60
   m_InnerSpotAngle: 6
   m_CookieSize: 10
@@ -769,7 +769,7 @@ MonoBehaviour:
   batteryDecreaseTickFrequency: 2
   batteryDecreasePerTick: 5
   flashlightCollider: {fileID: 1094506696}
-  spotlightPercentage: 33
+  spotlightPercentage: 15
   flashlightLight: {fileID: 1094506695}
   onItemCatching:
     m_PersistentCalls:

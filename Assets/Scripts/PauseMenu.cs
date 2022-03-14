@@ -7,44 +7,60 @@ public class PauseMenu : MonoBehaviour
     /// <summary>
     /// Helper flag to get pause state
     /// </summary>
-    public static bool IsGamePaused = false;
+    public static bool isGamePaused = false;
 
     public GameObject pauseMenuUI;
 
     public SceneChanger sceneChanger;
+  
     
+    /// <summary>
+    /// Method to be given to XRRig OnButtonLongPressed event
+    /// </summary>
     public void TriggerPause()
     {
-        Debug.Log("PAUSE: " + IsGamePaused);
-        if (IsGamePaused)
+        Debug.Log("PAUSE: " + isGamePaused);
+        if (isGamePaused)
             Resume();
         else
             Pause();
     }
 
+    /// <summary>
+    /// Disable pause and resume game
+    /// </summary>
     public void Resume()
     {
         // TODO: Activate torch light
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        IsGamePaused = false;
+        isGamePaused = false;
     }
     
+    /// <summary>
+    /// Pause game
+    /// </summary>
     void Pause()
     {
         // TODO: Find a way to deactivate torch light
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        IsGamePaused = true;
+        isGamePaused = true;
     }
 
+    /// <summary>
+    /// Load Menu scene
+    /// </summary>
     public void LoadMenu()
     {
-        IsGamePaused = false;
+        isGamePaused = false;
         sceneChanger.Menu();
         Time.timeScale = 1f;
     }
 
+    /// <summary>
+    /// Exit game
+    /// </summary>
     public void Exit()
     {
         sceneChanger.ExitGame();

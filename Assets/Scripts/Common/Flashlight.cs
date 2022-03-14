@@ -38,7 +38,7 @@ namespace Common {
         /// <summary>
         /// Level of battery considered as critical
         /// </summary>
-        public const float CriticalBatteryLevel = 25;
+        public const float CriticalBatteryLevel = 35;
 
         [Tooltip("Frequency of battery level decrease in seconds")]
         public ushort batteryDecreaseTickFrequency = 10;

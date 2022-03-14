@@ -24,6 +24,18 @@ namespace Common.Item {
             /// </summary>
             /// <param name="item">Battery</param>
             public void OnBattery(BatteryItem item);
+
+            /// <summary>
+            /// Callback called when a <see cref="FlashItem"/> is encountered
+            /// </summary>
+            /// <param name="item">Flash</param>
+            public void OnFlash(FlashItem item);
+
+            /// <summary>
+            /// Callback called when a <see cref="SonarItem"/> is encountered
+            /// </summary>
+            /// <param name="item">Sonar</param>
+            public void OnSonar(SonarItem item);
         }
     }
 }

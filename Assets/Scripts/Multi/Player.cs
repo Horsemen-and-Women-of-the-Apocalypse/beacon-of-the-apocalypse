@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using Common;
 using Common.Item;
 using UnityEngine;
@@ -49,6 +50,9 @@ namespace Multi {
             public void OnBattery(BatteryItem item) {
                 _flashlight.Consume(item);
             }
+
+            public void OnFlash(FlashItem item) { throw new NotImplementedException(); } // Not unsed in multi
+            public void OnSonar(SonarItem item) { throw new NotImplementedException(); } // Not unsed in multi
         }
     }
 }

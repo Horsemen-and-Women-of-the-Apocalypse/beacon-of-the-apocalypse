@@ -71,6 +71,11 @@ namespace Common {
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
 
+        public void TurnOnOff()
+        {
+            flashlightLight.enabled = !flashlightLight.enabled;
+        }
+
         private void Start() {
             // Adjust collider to fit the light
             var lightRange = flashlightLight.range;
@@ -203,6 +208,41 @@ namespace Common {
             Debug.Log($"Battery: {_batteryLevel}%");
 #endif
             Destroy(itemGameObject);
+        }
+
+        /// <summary>
+        /// Consume the given sonar item
+        /// </summary>
+        /// <param name="item">Item</param>
+        public void Consume(SonarItem item)
+        {
+            
+        }
+
+        /// <summary>
+        /// Consume the given flash item
+        /// </summary>
+        /// <param name="item">Item</param>
+        public void Consume(FlashItem item)
+        {
+            StartCoroutine(Flash(item));   
+        }
+
+        IEnumerator Flash(AItem item)
+        {
+            float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
+            Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
+
+            GameObject.Find("Moon Light").GetComponent<Light>().intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity * 50;
+            GameObject.Find("Moon Light").GetComponent<Light>().color = Color.white;
+
+            yield return new WaitForSeconds(0.5f);
+
+            GameObject.Find("Moon Light").GetComponent<Light>().intensity = intensity;
+            GameObject.Find("Moon Light").GetComponent<Light>().color = color;
+
+            Destroy(item);
+
         }
 
         /// <summary>

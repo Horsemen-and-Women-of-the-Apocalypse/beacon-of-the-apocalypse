@@ -101,9 +101,9 @@ public class Inventory : MonoBehaviour
                 }
                 break; 
             case ETouchPadButton.Left: //  Sonar used 
-                if (inventory[1] != null)
+                if (inventory[2] != null)
                 {
-                    // TODO Consume
+                    flashlight.Consume((SonarItem)inventory[2]);
                     sonarEvent.Invoke(false);
                     inventory[2] = null; 
                 }

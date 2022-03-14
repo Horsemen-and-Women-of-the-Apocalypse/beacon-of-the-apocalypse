@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Common;
+using Common.Audio;
 using UnityEngine;
 
 public class GhostManager : MonoBehaviour, ITargetable {
@@ -10,58 +11,79 @@ public class GhostManager : MonoBehaviour, ITargetable {
     public int killValue = 5;
     public float speed = 0.5f;
 
-    public int minX = -5, minY = 0, minZ = -5;
-    public int maxX = 5, maxY = 5, maxZ = 5;
+    public int minX = -10;
+    public int minY = 0;
+    public int minZ = -10;
+    public int maxX = 10;
+    public int maxY = 10;
+    public int maxZ = 10;
+
+    public AudioSource ghostSound;
 
     private IEnumerator kill;
-    private IEnumerator move;
+
+    private Coroutine? _panicSoundFadeInCoroutine;
+    private Coroutine? _panicSoundFadeOutCoroutine;
+
+    public float smoothTime = 0.5F;
+    private Vector3 velocity = Vector3.zero;
+
+    private Vector3 target;
 
     void Start() {
         kill = Kill();
-        move = Move();
 
-        StartCoroutine(move);
+        target = transform.position;
+    }
+
+    void Update()
+    {
+        var playerCamera = Camera.main;
+        if (playerCamera != null && Vector3.Distance(transform.position, target) < 0.1)
+        {
+            int x = UnityEngine.Random.Range(minX, maxX);
+            int y = UnityEngine.Random.Range(minY, maxY);
+            int z = UnityEngine.Random.Range(minZ, maxZ);
+
+            Debug.Log(x);
+            Debug.Log(y);
+            Debug.Log(z);
+
+           target = new Vector3(x, y, x);
+
+        }
+        Debug.Log(target);
+
+        transform.LookAt(target);
+
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, 3);
+
+        Debug.Log(transform.position);
+
+        transform.LookAt(playerCamera.transform);
+        
     }
 
     public void OnEnter() {
         StartCoroutine(kill);
+
+        if (_panicSoundFadeOutCoroutine != null)
+        {
+            StopCoroutine(_panicSoundFadeOutCoroutine);
+        }
+
+        _panicSoundFadeInCoroutine = StartCoroutine(AudioFadeOut.FadeIn(ghostSound, 0.3f));
     }
 
     public void OnExit() {
         StopCoroutine(kill);
-    }
 
-    void OnDestroy()
-    {
-        StopCoroutine(move);
-    }
-
-    private IEnumerator Move()
-    {
-        while(true)
+        if (_panicSoundFadeInCoroutine != null)
         {
-            yield return new WaitForSeconds(3);
+            StopCoroutine(_panicSoundFadeInCoroutine);
+        }
 
-            float xBase = transform.position.x;
-            float yBase = transform.position.y;
-            float zBase = transform.position.z;
-
-            System.Random random = new System.Random();
-
-            float x = random.Next(minX, maxX);
-            float y = random.Next(minY, maxY);
-            float z = random.Next(minZ, maxZ);
-            
-            transform.position += new Vector3(x, y, z);
-
-            var playerCamera = Camera.main;
-            if (playerCamera != null)
-            {
-                transform.LookAt(playerCamera.transform);
-            }
-        }   
-
-        yield return null;
+        _panicSoundFadeOutCoroutine = StartCoroutine(AudioFadeOut.FadeOut(ghostSound, 0.1f));
     }
 
     private IEnumerator Kill()
@@ -69,6 +91,8 @@ public class GhostManager : MonoBehaviour, ITargetable {
         yield return new WaitForSeconds(timing);
 
         GameObject.Find("Environment").GetComponent<ScoreManager>().Add(killValue);
+
+        ghostSound.Stop();
 
         Destroy(gameObject);
     }

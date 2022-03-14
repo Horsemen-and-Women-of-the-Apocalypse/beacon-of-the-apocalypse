@@ -14,7 +14,7 @@ namespace Common.Controller {
         /// Event notifying the state of the trigger button
         /// </summary>
         public TriggerEvent Trigger;
-        
+
         /// <summary>
         /// Event notifying a click on the touch pad
         /// </summary>

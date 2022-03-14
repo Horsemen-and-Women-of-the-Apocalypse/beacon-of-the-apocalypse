@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using UnityEditor;
 using UnityEngine;
 
 namespace Common {
@@ -49,7 +48,7 @@ namespace Common {
 
                 for (var i = 0; i < numberOfSpawnPerWave; i++) {
                     // Generate name
-                    var objectName = GUID.Generate().ToString();
+                    var objectName = Guid.NewGuid().ToString();
                     var hashCode = objectName.GetHashCode();
                     yield return null;
 

@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b1df1ae37ea0103488b57c40ea286adb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.576
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b1df1ae37ea0103488b57c40ea286adb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1552,6 +1552,7 @@ MonoBehaviour:
         m_CallState: 2
   pannicSound: {fileID: 1948637377}
   dieSound: {fileID: 1948637378}
+  smoothTime: 0.3
 --- !u!136 &1948637375
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1565,7 +1566,7 @@ CapsuleCollider:
   m_Radius: 0.27946103
   m_Height: 1.281041
   m_Direction: 1
-  m_Center: {x: -0.013554573, y: 0.59835535, z: 0}
+  m_Center: {x: -0.013554573, y: 0, z: 0}
 --- !u!54 &1948637376
 Rigidbody:
   m_ObjectHideFlags: 0

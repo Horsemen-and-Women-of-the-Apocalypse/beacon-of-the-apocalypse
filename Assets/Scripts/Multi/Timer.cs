@@ -8,6 +8,9 @@ using System.Collections.Generic;
 [Serializable]
 public class DoneEvent : UnityEvent { }
 
+[Serializable]
+public class TickEvent : UnityEvent { }
+
 public class Timer : MonoBehaviour {
 
     public Text text;
@@ -16,7 +19,8 @@ public class Timer : MonoBehaviour {
     public float interval = 1;
 
     public DoneEvent @event;
-    
+    public TickEvent tickEvent;
+
     void Start() {
         StartCoroutine(CountDown());
     }
@@ -24,6 +28,7 @@ public class Timer : MonoBehaviour {
     IEnumerator CountDown() {
         for (var i = count; i >= 0; i--) {
             text.text = i.ToString();
+            tickEvent.Invoke();
 
             yield return new WaitForSeconds(interval);
         }

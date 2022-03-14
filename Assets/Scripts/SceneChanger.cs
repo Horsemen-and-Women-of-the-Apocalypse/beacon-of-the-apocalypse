@@ -36,6 +36,10 @@ public class SceneChanger : MonoBehaviour {
         this._FateToScene("Game Over");
     }
 
+    public void Win() {
+        this._FateToScene("Win");
+    }
+
     public void ExitGame() {
 #if UNITY_EDITOR
         Debug.Log("Exit game");

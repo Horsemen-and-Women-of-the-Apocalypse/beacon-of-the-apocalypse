@@ -1,18 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using Common;
 using UnityEngine;
 
 public class GhostManager : MonoBehaviour, ITargetable {
-
     public int timing = 3;
 
     public int killValue = 5;
 
     private IEnumerator kill;
 
-    void Start()
-    {
+    void Start() {
         kill = Kill();
     }
 
@@ -24,8 +21,7 @@ public class GhostManager : MonoBehaviour, ITargetable {
         StopCoroutine(kill);
     }
 
-    private IEnumerator Kill()
-    {
+    private IEnumerator Kill() {
         yield return new WaitForSeconds(timing);
 
         GameObject.Find("Environment").GetComponent<ScoreManager>().Add(killValue);

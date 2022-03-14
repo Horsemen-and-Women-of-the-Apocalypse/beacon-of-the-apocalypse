@@ -30,10 +30,10 @@ namespace Common.Controller {
             // Notify rotation
             var rotationAsQuaternion = Quaternion.Euler(_rotation);
             Rotation.Invoke(rotationAsQuaternion);
-            
+
             // Notify trigger
             Trigger.Invoke(Input.GetKey(KeyCode.Z));
-            
+
             // Notify menu button
             Menu.Invoke(Input.GetKey(KeyCode.E));
 
@@ -49,7 +49,7 @@ namespace Common.Controller {
                     TouchPad.Invoke(ETouchPadButton.Right);
                 }
             }
-            
+
             // Update object's rotation
             transform.localRotation = rotationAsQuaternion;
         }

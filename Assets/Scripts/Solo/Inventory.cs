@@ -1,13 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Common.Controller;
 using Common.Item;
 using Common;
+using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+public class BatteryEvent : UnityEvent<bool> { }
+
+[Serializable]
+public class FlashEvent : UnityEvent<bool> { }
+
+[Serializable]
+public class SonarEvent : UnityEvent<bool> { }
 
 public class Inventory : MonoBehaviour
 {
     private AItem[] inventory;
+
+    public BatteryEvent batteryEvent;
+    public FlashEvent flashEvent;
+    public SonarEvent sonarEvent;
 
     void Start()
     {
@@ -35,10 +51,10 @@ public class Inventory : MonoBehaviour
 
             if (item is BatteryItem)
             {
-                Debug.Log("Battery");
                 if (inventory[0] == null)
                 {
                     inventory[0] = item;
+                    batteryEvent.Invoke(true);
                     item.gameObject.SetActiveRecursively(false);
                 }
             }
@@ -47,6 +63,7 @@ public class Inventory : MonoBehaviour
                 if (inventory[1] == null)
                 {
                     inventory[1] = item;
+                    flashEvent.Invoke(true);
                     item.gameObject.SetActiveRecursively(false);
                 }
             }
@@ -55,6 +72,7 @@ public class Inventory : MonoBehaviour
                 if (inventory[2] == null)
                 {
                     inventory[2] = item;
+                    sonarEvent.Invoke(true);
                     item.gameObject.SetActiveRecursively(false);
                 }
             }
@@ -69,6 +87,7 @@ public class Inventory : MonoBehaviour
                 if(inventory[0] != null)
                 {
                     flashlight.Consume((BatteryItem) inventory[0]);
+                    batteryEvent.Invoke(false);
                     inventory[0] = null;
                 }
                  break; 
@@ -77,12 +96,18 @@ public class Inventory : MonoBehaviour
                 if (inventory[1] != null)
                 {
                     flashlight.Consume((FlashItem) inventory[1]);
+                    flashEvent.Invoke(false);
                     inventory[1] = null;
                 }
                 break; 
-            case ETouchPadButton.Left: //  Sonar used  
-
-                inventory[2] = null; break;  
+            case ETouchPadButton.Left: //  Sonar used 
+                if (inventory[1] != null)
+                {
+                    // TODO Consume
+                    sonarEvent.Invoke(false);
+                    inventory[2] = null; 
+                }
+                break;
         }
     }
 }

@@ -5,6 +5,7 @@ using Common;
 using UnityEngine;
 
 public class GhostManager : MonoBehaviour, ITargetable {
+
     public int timing = 3;
     public int killValue = 5;
     public float speed = 0.5f;

@@ -201,6 +201,39 @@ namespace Common {
         }
 
         /// <summary>
+        /// Consume the given sonar item
+        /// </summary>
+        /// <param name="item">Item</param>
+        public void Consume(SonarItem item)
+        {
+            
+        }
+
+        /// <summary>
+        /// Consume the given flash item
+        /// </summary>
+        /// <param name="item">Item</param>
+        public void Consume(FlashItem items)
+        {
+            StartCoroutine(Flash());   
+        }
+
+        IEnumerator Flash()
+        {
+            float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
+            Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
+
+            GameObject.Find("Moon Light").GetComponent<Light>().intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity * 50;
+            GameObject.Find("Moon Light").GetComponent<Light>().color = Color.white;
+
+            yield return new WaitForSeconds(0.5f);
+
+            GameObject.Find("Moon Light").GetComponent<Light>().intensity = intensity;
+            GameObject.Find("Moon Light").GetComponent<Light>().color = color;
+
+        }
+
+        /// <summary>
         /// Coroutine making the flashlight blink
         /// </summary>
         /// <returns></returns>

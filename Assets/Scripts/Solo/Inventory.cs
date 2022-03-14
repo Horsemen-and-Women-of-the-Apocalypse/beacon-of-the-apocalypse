@@ -31,35 +31,48 @@ public class Inventory : MonoBehaviour
     public void Catch(IList<AItem> items)
     {
 
+        Debug.Log("Test");
+
         foreach(AItem item in items)
         {
-            var type = item.GetType();     
 
-            if (type is BatteryItem)
+            if (item is BatteryItem)
             {
                 inventory[0] = item;
-                Destroy(item);
             }
-            else if (type is FlashItem)
+            else if (item is FlashItem)
             {
                 inventory[1] = item;
-                Destroy(item);
             }
             else
             {
                 inventory[2] = item;
-                Destroy(item);
             }
         }
     }
 
-    public void Use(ETouchPadButton button)
+    public void Use(ETouchPadButton button, Flashlight flashlight)
     {
         switch (button)
         {
-            case ETouchPadButton.Top: inventory[0] = null; break; // Battery used
-            case ETouchPadButton.Right: inventory[1] = null; break; // Flash used
-            case ETouchPadButton.Left: inventory[2] = null; break; //  Sonar used    
+            case ETouchPadButton.Top: // Battery used
+                if(inventory[0] != null)
+                {
+                    flashlight.Consume((BatteryItem)inventory[0]);
+                    inventory[0] = null;
+                }
+                 break; 
+                
+            case ETouchPadButton.Right: // Flash used
+                if (inventory[1] != null)
+                {
+                    flashlight.Consume((FlashItem) inventory[1]);
+                    inventory[1] = null;
+                }
+                break; 
+            case ETouchPadButton.Left: //  Sonar used  
+
+                inventory[2] = null; break;  
         }
     }
 }

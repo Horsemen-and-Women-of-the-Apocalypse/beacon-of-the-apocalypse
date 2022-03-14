@@ -33,7 +33,8 @@ public class FlashLightController : MonoBehaviour
 
     public void UseItem(ETouchPadButton button)
     {
-        // TODO action on used
-        inventory.Use(button);
+        Flashlight flashlight = GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>();
+
+        inventory.Use(button, flashlight);
     }
 }

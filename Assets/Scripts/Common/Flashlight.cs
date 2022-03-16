@@ -68,14 +68,11 @@ namespace Common {
 
         public SonarTriggerEvent sonarTrigger;
 
-        [Tooltip("Played an item is catched")]
-        public AudioSource catchSound;
+        [Tooltip("Played an item is caught")] public AudioSource catchSound;
 
-        [Tooltip("Played when sonar is used")]
-        public AudioSource sonarSound;
+        [Tooltip("Played when sonar is used")] public AudioSource sonarSound;
 
-        [Tooltip("Played when flash is used")]
-        public AudioSource flashSound;
+        [Tooltip("Played when flash is used")] public AudioSource flashSound;
 
         [Tooltip("Played when battery is used")]
         public AudioSource batterySound;
@@ -91,8 +88,7 @@ namespace Common {
 
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
-
-        private IEnumerator consume;
+        private Coroutine _consumeCoroutine;
 
         private void Start() {
             // Adjust collider to fit the light
@@ -103,27 +99,25 @@ namespace Common {
             flashlightCollider.direction = 2;
 
             // Start battery level decrease
-
-            consume = Consume();
-
-            StartCoroutine(consume);
+            _consumeCoroutine = StartCoroutine(Consume());
         }
 
-        public void TurnOnOff()
-        {
+        public void TurnOnOff() {
             flashlightLight.enabled = !flashlightLight.enabled;
-            if(flashlightLight.enabled)
-            {
-                StartCoroutine(consume);
+            if (flashlightLight.enabled) {
+                _consumeCoroutine = StartCoroutine(Consume());
                 flashlightOnSound.Play();
-            } else
-            {
-                StopCoroutine(consume);
+            } else {
+                StopCoroutine(_consumeCoroutine);
                 flashlightOffSound.Play();
             }
         }
 
         private void OnTriggerEnter(Collider other) {
+            if (!flashlightLight.enabled) {
+                return;
+            }
+
             var triggerObject = other.gameObject;
 
 #if UNITY_EDITOR
@@ -138,6 +132,10 @@ namespace Common {
         }
 
         private void OnTriggerExit(Collider other) {
+            if (!flashlightLight.enabled) {
+                return;
+            }
+
             var triggerObject = other.gameObject;
 
 #if UNITY_EDITOR
@@ -155,6 +153,10 @@ namespace Common {
         /// Catch items in spotlight
         /// </summary>
         public void CatchItems() {
+            if (!flashlightLight.enabled) {
+                return;
+            }
+
             var items = new List<AItem>();
 
             // Iterate over a copy to be able to remove entries
@@ -251,12 +253,10 @@ namespace Common {
         /// Consume the given sonar item
         /// </summary>
         /// <param name="item">Item</param>
-        public void Consume(SonarItem item)
-        {
+        public void Consume(SonarItem item) {
             var itemGameObject = item.gameObject;
 
-            if(itemGameObject == null)
-            {
+            if (itemGameObject == null) {
                 return;
             }
 
@@ -271,13 +271,11 @@ namespace Common {
         /// Consume the given flash item
         /// </summary>
         /// <param name="item">Item</param>
-        public void Consume(FlashItem item)
-        {
-            StartCoroutine(Flash(item));   
+        public void Consume(FlashItem item) {
+            StartCoroutine(Flash(item));
         }
 
-        IEnumerator Flash(AItem item)
-        {
+        IEnumerator Flash(AItem item) {
             float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
             Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
 
@@ -292,7 +290,6 @@ namespace Common {
             GameObject.Find("Moon Light").GetComponent<Light>().color = color;
 
             Destroy(item);
-
         }
 
         /// <summary>

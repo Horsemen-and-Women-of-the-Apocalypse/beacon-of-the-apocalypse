@@ -275,21 +275,34 @@ namespace Common {
             StartCoroutine(Flash(item));
         }
 
-        IEnumerator Flash(AItem item) {
-            float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
-            Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
+        /// <summary>
+        /// Coroutine to create a flash
+        /// </summary>
+        private IEnumerator Flash(AItem item) {
+
+            Light moonLight = GameObject.Find("Moon Light").GetComponent<Light>();
+
+            float intensity = moonLight.intensity;
+            Color color = moonLight.color;
 
             flashSound.Play();
 
-            GameObject.Find("Moon Light").GetComponent<Light>().intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity * 50;
-            GameObject.Find("Moon Light").GetComponent<Light>().color = Color.white;
+            UpdateLight(moonLight, Color.white, moonLight.intensity * 50);
 
             yield return new WaitForSeconds(0.5f);
 
-            GameObject.Find("Moon Light").GetComponent<Light>().intensity = intensity;
-            GameObject.Find("Moon Light").GetComponent<Light>().color = color;
+            UpdateLight(moonLight, color, intensity);
 
             Destroy(item);
+        }
+
+        /// <summary>
+        /// Update given light intensity and color
+        /// </summary>
+        private void UpdateLight(Light light, Color color, float intensity)
+        {
+            light.intensity = intensity;
+            light.color = color;
         }
 
         /// <summary>

@@ -19,6 +19,8 @@ public class GhostManager : MonoBehaviour, ITargetable {
     public int maxZ = 10;
 
     public AudioSource ghostSound;
+    public AudioSource dieSound;
+    public AudioSource sonarGhost;
 
     private IEnumerator kill;
 
@@ -33,6 +35,8 @@ public class GhostManager : MonoBehaviour, ITargetable {
     void Start() {
         kill = Kill();
 
+        GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>()?.sonarTrigger.AddListener(SonarTrigger);
+
         target = transform.position;
     }
 
@@ -45,20 +49,12 @@ public class GhostManager : MonoBehaviour, ITargetable {
             int y = UnityEngine.Random.Range(minY, maxY);
             int z = UnityEngine.Random.Range(minZ, maxZ);
 
-            Debug.Log(x);
-            Debug.Log(y);
-            Debug.Log(z);
-
-           target = new Vector3(x, y, x);
-
+            target = new Vector3(x, y, x);
         }
-        Debug.Log(target);
 
         transform.LookAt(target);
 
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, 3);
-
-        Debug.Log(transform.position);
 
         transform.LookAt(playerCamera.transform);
         
@@ -93,7 +89,22 @@ public class GhostManager : MonoBehaviour, ITargetable {
         GameObject.Find("Environment").GetComponent<ScoreManager>().Add(killValue);
 
         ghostSound.Stop();
+        AudioSource.PlayClipAtPoint(dieSound.clip, transform.position);
 
         Destroy(gameObject);
+    }
+
+    private void SonarTrigger()
+    {
+        StartCoroutine(Sonar());
+    }
+
+    private IEnumerator Sonar()
+    {
+        yield return new WaitForSeconds(Vector3.Distance(transform.position, GameObject.Find("Flashlight(Clone)").transform.position) / 2);
+
+        sonarGhost.Play();
+
+        yield return null;
     }
 }

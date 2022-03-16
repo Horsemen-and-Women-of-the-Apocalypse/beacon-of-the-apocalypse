@@ -19,6 +19,12 @@ namespace Common {
     public class RemainingBatteryPercentage : UnityEvent<float> { }
 
     /// <summary>
+    /// Event describing sonar trigger
+    /// </summary>
+    [Serializable]
+    public class SonarTriggerEvent : UnityEvent { }
+
+    /// <summary>
     /// Event representing a game over
     /// </summary>
     [Serializable]
@@ -60,9 +66,19 @@ namespace Common {
 
         public GameOverEvent onGameOver;
 
+        public SonarTriggerEvent sonarTrigger;
+
+        [Tooltip("Played an item is catched")]
         public AudioSource catchSound;
 
+        [Tooltip("Played when sonar is used")]
         public AudioSource sonarSound;
+
+        [Tooltip("Played when flash is used")]
+        public AudioSource flashSound;
+
+        [Tooltip("Played when battery is used")]
+        public AudioSource batterySound;
 
         [Tooltip("Played when the flashlight glitch a little")]
         public AudioSource defectingflashlightSound;
@@ -226,6 +242,8 @@ namespace Common {
 #if UNITY_EDITOR
             Debug.Log($"Battery: {_batteryLevel}%");
 #endif
+            batterySound.Play();
+
             Destroy(itemGameObject);
         }
 
@@ -244,6 +262,8 @@ namespace Common {
 
             if (sonarSound != null) sonarSound.Play();
 
+            sonarTrigger.Invoke();
+
             Destroy(itemGameObject);
         }
 
@@ -260,6 +280,8 @@ namespace Common {
         {
             float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
             Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
+
+            flashSound.Play();
 
             GameObject.Find("Moon Light").GetComponent<Light>().intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity * 50;
             GameObject.Find("Moon Light").GetComponent<Light>().color = Color.white;

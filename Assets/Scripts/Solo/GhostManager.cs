@@ -101,9 +101,6 @@ public class GhostManager : MonoBehaviour, ITargetable {
 
     private IEnumerator Sonar()
     {
-
-        Debug.Log(Vector3.Distance(transform.position, GameObject.Find("Flashlight(Clone)").transform.position));
-
         yield return new WaitForSeconds(Vector3.Distance(transform.position, GameObject.Find("Flashlight(Clone)").transform.position) / 2);
 
         sonarGhost.Play();

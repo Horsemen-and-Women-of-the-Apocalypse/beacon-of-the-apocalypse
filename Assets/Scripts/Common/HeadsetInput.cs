@@ -42,7 +42,12 @@ namespace Common {
 
                 // TODO: Display some feedback ?
             } else if (Input.GetKeyUp(ButtonKeyCode)) {
-                if (_keyDownTimeStep == null || Time.time - _keyDownTimeStep.Value < longPressDuration) {
+                if (_keyDownTimeStep == null) {
+                    return;
+                }
+
+                if (Time.time - _keyDownTimeStep.Value < longPressDuration) {
+                    _keyDownTimeStep = null;
                     return;
                 }
 

@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Inventory inventory;
+    private Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
     {
+        inventory = GameObject.Find("LeftHand Controller").GetComponent<Inventory>();
+
         inventory.batteryEvent.AddListener(UpdateUIBattery);
         inventory.flashEvent.AddListener(UpdateUIFlash);
         inventory.sonarEvent.AddListener(UpdateUISonar);

@@ -62,11 +62,16 @@ namespace Common {
 
         public AudioSource catchSound;
 
+        public AudioSource sonarSound;
+
         [Tooltip("Played when the flashlight glitch a little")]
         public AudioSource defectingflashlightSound;
 
         [Tooltip("Played when the flashlight is turned off")]
         public AudioSource flashlightOffSound;
+
+        [Tooltip("Played when the flashlight is turned on")]
+        public AudioSource flashlightOnSound;
 
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
@@ -94,9 +99,11 @@ namespace Common {
             if(flashlightLight.enabled)
             {
                 StartCoroutine(consume);
+                flashlightOnSound.Play();
             } else
             {
                 StopCoroutine(consume);
+                flashlightOffSound.Play();
             }
         }
 
@@ -228,7 +235,16 @@ namespace Common {
         /// <param name="item">Item</param>
         public void Consume(SonarItem item)
         {
-            
+            var itemGameObject = item.gameObject;
+
+            if(itemGameObject == null)
+            {
+                return;
+            }
+
+            if (sonarSound != null) sonarSound.Play();
+
+            Destroy(itemGameObject);
         }
 
         /// <summary>

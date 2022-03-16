@@ -11,21 +11,26 @@ public class SpawnPowerUp : MonoBehaviour
 
     public List<GameObject> powerUps;
 
+    public float luck = 50;
+
     void OnDestroy()
     {
-        int choice = getRandom(0, powerUps.Count - 1);
-        GameObject spawnablePowerUp = powerUps[choice];
+        int loot = getRandom(0, 100);
 
-        var instance = Instantiate(spawnablePowerUp, transform);
-
-        GameObject items = GameObject.Find("Items");
-
-        if(items != null)
+        if(luck > loot)
         {
-            instance.transform.SetParent(items.transform);
-        }
+            int choice = getRandom(0, powerUps.Count - 1);
+            GameObject spawnablePowerUp = powerUps[choice];
 
-        
+            var instance = Instantiate(spawnablePowerUp, transform);
+
+            GameObject items = GameObject.Find("Items");
+
+            if (items != null)
+            {
+                instance.transform.SetParent(items.transform);
+            }
+        } 
     }
 
     int getRandom(int min, int max)

@@ -4,8 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Common;
 
+/// <summary>
+/// Class to update flashlight ui batterie level
+/// </summary>
 public class BatteryLevel : MonoBehaviour
 {
+    /// <summary>
+    /// Flashlight object
+    /// </summary>
     public Flashlight flashlight;
 
     // Start is called before the first frame update
@@ -14,7 +20,10 @@ public class BatteryLevel : MonoBehaviour
         flashlight.onBatteryChange.AddListener(UpdateBattery);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Called when onBatteryChange event is triggered
+    /// </summary>
+    /// <param name="battery"></param>
     public void UpdateBattery(float battery)
     {
         gameObject.GetComponent<Text>().text = battery + "%";

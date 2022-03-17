@@ -502,6 +502,14 @@ PrefabInstance:
       value: Pause canvas
       objectReference: {fileID: 0}
     - target: {fileID: 823183142996567738, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: sheet
+      value: 
+      objectReference: {fileID: 2042086132}
+    - target: {fileID: 823183142996567738, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: XRLine
+      value: 
+      objectReference: {fileID: 780530632}
+    - target: {fileID: 823183142996567738, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: flashlight
       value: 
       objectReference: {fileID: 1094506697}
@@ -513,6 +521,12 @@ PrefabInstance:
       propertyPath: sceneChanger
       value: 
       objectReference: {fileID: 1288141748}
+    - target: {fileID: 3696318172057811877, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: m_Text
+      value: 'Multi mode
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 6942484407596705550, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -548,6 +562,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 1094506697}
+--- !u!114 &780530632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7053899758272515523, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+  m_PrefabInstance: {fileID: 1512350924}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &858239167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,6 +1638,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7053899758272515523, guid: d86c0194214a77d4492e57185820e34f, type: 3}
+      propertyPath: m_LineLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7053899758272515582, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: m_ModelPrefab
       value: 
@@ -1927,3 +1956,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2042086132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4175400097012991936, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+  m_PrefabInstance: {fileID: 623725873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86024f1146a368e4f9fc36bfea73244c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,22 +8,46 @@ using Common;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Battery event
+/// </summary>
 [Serializable]
 public class BatteryEvent : UnityEvent<bool> { }
 
+/// <summary>
+/// Flash event
+/// </summary>
 [Serializable]
 public class FlashEvent : UnityEvent<bool> { }
 
+/// <summary>
+/// Sonar event
+/// </summary>
 [Serializable]
 public class SonarEvent : UnityEvent<bool> { }
 
+/// <summary>
+/// Class to store and use items
+/// </summary>
 public class Inventory : MonoBehaviour
 {
-    private AItem[] inventory;
-
+    /// <summary>
+    /// Battery event instance
+    /// </summary>
     public BatteryEvent batteryEvent;
+
+    /// <summary>
+    /// Flash event instance
+    /// </summary>
     public FlashEvent flashEvent;
+
+    /// <summary>
+    /// Sonar event instance
+    /// </summary>
     public SonarEvent sonarEvent;
+
+    // Inventory containing items
+    private AItem[] inventory;
 
     void Start()
     {
@@ -32,23 +56,27 @@ public class Inventory : MonoBehaviour
         StartCoroutine(Init());
     }
 
+    /// <summary>
+    /// Used to init listener for catch
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Init()
     {
-
         yield return new WaitForSeconds(1);
 
         GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>()?.onItemCatching.AddListener(Catch);
 
-        Debug.Log(GameObject.Find("Flashlight(Clone)")?.GetComponentInChildren<Flashlight>());
-
         yield return null;
     }
 
+    /// <summary>
+    /// Function called when an item is catched
+    /// </summary>
+    /// <param name="items"></param>
     public void Catch(IList<AItem> items)
     {
         foreach(AItem item in items)
         {
-
             if (item is BatteryItem)
             {
                 if (inventory[0] == null)
@@ -79,6 +107,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function to use items
+    /// </summary>
+    /// <param name="button"></param>
+    /// <param name="flashlight"></param>
     public void Use(ETouchPadButton button, Flashlight flashlight)
     {
         switch (button)

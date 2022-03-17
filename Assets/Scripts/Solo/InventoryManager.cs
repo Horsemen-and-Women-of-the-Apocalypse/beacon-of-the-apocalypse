@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class used to manage inventory UI
+/// </summary>
 public class InventoryManager : MonoBehaviour
 {
+    // Instance of inventory
     private Inventory inventory;
 
     // Start is called before the first frame update
@@ -17,6 +21,10 @@ public class InventoryManager : MonoBehaviour
         inventory.sonarEvent.AddListener(UpdateUISonar);
     }
 
+    /// <summary>
+    /// Update battery UI
+    /// </summary>
+    /// <param name="status"></param>
     private void UpdateUIBattery(bool status)
     {
         string UIValue = "False";
@@ -26,6 +34,10 @@ public class InventoryManager : MonoBehaviour
         GameObject.Find("Battery").GetComponent<Text>().text = UIValue;
     }
 
+    /// <summary>
+    /// Update flash UI
+    /// </summary>
+    /// <param name="status"></param>
     private void UpdateUIFlash(bool status)
     {
         string UIValue = "False";
@@ -35,6 +47,10 @@ public class InventoryManager : MonoBehaviour
         GameObject.Find("Flash").GetComponent<Text>().text = UIValue;
     }
 
+    /// <summary>
+    /// Update sonar UI
+    /// </summary>
+    /// <param name="status"></param>
     private void UpdateUISonar(bool status)
     {
         string UIValue = "False";

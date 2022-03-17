@@ -5,31 +5,77 @@ using Common;
 using Common.Audio;
 using UnityEngine;
 
+/// <summary>
+/// Class to describe ghost
+/// </summary>
 public class GhostManager : MonoBehaviour, ITargetable {
 
+    /// <summary>
+    /// Killing time in seconds
+    /// </summary>
     public int timing = 3;
-    public int killValue = 5;
-    public float speed = 0.5f;
 
+    /// <summary>
+    /// Point gived by ghost at death
+    /// </summary>
+    public int killValue = 5;
+
+    /// <summary>
+    /// MinX value
+    /// </summary>
     public int minX = -10;
+
+    /// <summary>
+    /// MinY value
+    /// </summary>
     public int minY = 0;
+    
+    /// <summary>
+    /// MinZ value
+    /// </summary>
     public int minZ = -10;
+    
+    /// <summary>
+    /// MaxX value
+    /// </summary>
     public int maxX = 10;
+    
+    /// <summary>
+    /// MaxY value
+    /// </summary>
     public int maxY = 10;
+    
+    /// <summary>
+    /// MaxZ value
+    /// </summary>
     public int maxZ = 10;
 
+    /// <summary>
+    /// Ghost sound when target
+    /// </summary>
     public AudioSource ghostSound;
-    public AudioSource dieSound;
-    public AudioSource sonarGhost;
 
+    /// <summary>
+    /// Ghost sound at death
+    /// </summary>
+    public AudioSource dieSound;
+
+    /// <summary>
+    /// Ghost response when sonar is used
+    /// </summary>
+    public AudioSource sonarGhost;
+    
+    // Call at death
     private IEnumerator kill;
 
+    // Coroutine for panic sounds
     private Coroutine? _panicSoundFadeInCoroutine;
     private Coroutine? _panicSoundFadeOutCoroutine;
 
-    public float smoothTime = 0.5F;
+    // Ghost velocity
     private Vector3 velocity = Vector3.zero;
 
+    // Target when ghost is moving
     private Vector3 target;
 
     void Start() {
@@ -60,6 +106,9 @@ public class GhostManager : MonoBehaviour, ITargetable {
         
     }
 
+    /// <summary>
+    /// Triggered when ghost is target
+    /// </summary>
     public void OnEnter() {
         StartCoroutine(kill);
 
@@ -71,6 +120,9 @@ public class GhostManager : MonoBehaviour, ITargetable {
         _panicSoundFadeInCoroutine = StartCoroutine(AudioFadeOut.FadeIn(ghostSound, 0.3f));
     }
 
+    /// <summary>
+    /// Triggered when ghost leave target state
+    /// </summary>
     public void OnExit() {
         StopCoroutine(kill);
 
@@ -82,6 +134,10 @@ public class GhostManager : MonoBehaviour, ITargetable {
         _panicSoundFadeOutCoroutine = StartCoroutine(AudioFadeOut.FadeOut(ghostSound, 0.1f));
     }
 
+    /// <summary>
+    /// Function to manage ghost death
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Kill()
     {
         yield return new WaitForSeconds(timing);
@@ -93,12 +149,19 @@ public class GhostManager : MonoBehaviour, ITargetable {
 
         Destroy(gameObject);
     }
-
+    
+    /// <summary>
+    /// Call when sonar is used
+    /// </summary>
     private void SonarTrigger()
     {
         StartCoroutine(Sonar());
     }
 
+    /// <summary>
+    /// Sonar function playing the sound
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Sonar()
     {
         yield return new WaitForSeconds(Vector3.Distance(transform.position, GameObject.Find("Flashlight(Clone)").transform.position) / 2);

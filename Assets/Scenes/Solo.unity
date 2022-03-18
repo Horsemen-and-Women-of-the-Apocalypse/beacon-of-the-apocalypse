@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 765460718}
   - component: {fileID: 765460717}
   - component: {fileID: 765460716}
+  - component: {fileID: 765460719}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -243,6 +244,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &765460719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765460715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSpeed: 0.3
+  moveDeadzone: 0.6
+  repeatDelay: 0.5
+  repeatRate: 0.1
+  trackedDeviceDragThresholdMultiplier: 2
+  m_MaxTrackedDeviceRaycastDistance: 1000
+  m_EnableXRInput: 1
+  m_EnableMouseInput: 1
+  m_EnableTouchInput: 1
 --- !u!114 &771015295 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3760912203571527520, guid: a338bf3e730b175499f3a78271c27834, type: 3}
@@ -628,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053899758272515523, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: m_LineLength
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7053899758272515523, guid: d86c0194214a77d4492e57185820e34f, type: 3}
       propertyPath: m_OverrideInteractorLineLength
@@ -1025,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_Lightmapping
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 823183142996567717, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 823183142996567718, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1240,6 +1266,10 @@ PrefabInstance:
     - target: {fileID: 5173791894920510976, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418204368419597990, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6279044191216661696, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

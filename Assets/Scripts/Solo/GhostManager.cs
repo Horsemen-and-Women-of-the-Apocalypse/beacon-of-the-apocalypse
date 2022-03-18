@@ -107,7 +107,7 @@ public class GhostManager : MonoBehaviour, ITargetable {
     }
 
     /// <summary>
-    /// Triggered when ghost is target
+    /// Triggered when ghost is targeted
     /// </summary>
     public void OnEnter() {
         StartCoroutine(kill);
@@ -121,7 +121,7 @@ public class GhostManager : MonoBehaviour, ITargetable {
     }
 
     /// <summary>
-    /// Triggered when ghost leave target state
+    /// Triggered when ghost leaves targeted state
     /// </summary>
     public void OnExit() {
         StopCoroutine(kill);

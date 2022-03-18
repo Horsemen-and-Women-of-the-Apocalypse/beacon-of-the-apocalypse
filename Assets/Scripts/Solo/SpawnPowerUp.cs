@@ -34,6 +34,8 @@ public class SpawnPowerUp : MonoBehaviour
             var instance = Instantiate(spawnablePowerUp, transform);
 
             GameObject items = GameObject.Find("Items");
+            
+            // TODO: Look at camera
 
             if (items != null)
             {

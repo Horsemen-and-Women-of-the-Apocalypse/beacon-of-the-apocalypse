@@ -4,30 +4,50 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
+/// <summary>
+/// Class to spawn a power-up
+/// </summary>
 public class SpawnPowerUp : MonoBehaviour
 {
-
-    private static RandomNumberGenerator random = RandomNumberGenerator.Create();
-
+    /// <summary>
+    /// List of power-up
+    /// </summary>
     public List<GameObject> powerUps;
+
+    /// <summary>
+    /// Luck for items loot (50 = 50%)
+    /// </summary>
+    public float luck = 50;
+
+    // Random number generator
+    private static RandomNumberGenerator random = RandomNumberGenerator.Create();
 
     void OnDestroy()
     {
-        int choice = getRandom(0, powerUps.Count - 1);
-        GameObject spawnablePowerUp = powerUps[choice];
+        int loot = getRandom(0, 100);
 
-        var instance = Instantiate(spawnablePowerUp, transform);
-
-        GameObject items = GameObject.Find("Items");
-
-        if(items != null)
+        if(luck > loot)
         {
-            instance.transform.SetParent(items.transform);
-        }
+            int choice = getRandom(0, powerUps.Count - 1);
+            GameObject spawnablePowerUp = powerUps[choice];
 
-        
+            var instance = Instantiate(spawnablePowerUp, transform);
+
+            GameObject items = GameObject.Find("Items");
+
+            if (items != null)
+            {
+                instance.transform.SetParent(items.transform);
+            }
+        } 
     }
 
+    /// <summary>
+    /// Return random number between min and max
+    /// </summary>
+    /// <param name="min"></param>
+    /// <param name="max"></param>
+    /// <returns></returns>
     int getRandom(int min, int max)
     {
         var bytes = new byte[sizeof(int)];

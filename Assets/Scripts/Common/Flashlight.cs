@@ -19,6 +19,12 @@ namespace Common {
     public class RemainingBatteryPercentage : UnityEvent<float> { }
 
     /// <summary>
+    /// Event describing sonar trigger
+    /// </summary>
+    [Serializable]
+    public class SonarTriggerEvent : UnityEvent { }
+
+    /// <summary>
     /// Event representing a game over
     /// </summary>
     [Serializable]
@@ -60,7 +66,16 @@ namespace Common {
 
         public GameOverEvent onGameOver;
 
-        public AudioSource catchSound;
+        public SonarTriggerEvent sonarTrigger;
+
+        [Tooltip("Played an item is caught")] public AudioSource catchSound;
+
+        [Tooltip("Played when sonar is used")] public AudioSource sonarSound;
+
+        [Tooltip("Played when flash is used")] public AudioSource flashSound;
+
+        [Tooltip("Played when battery is used")]
+        public AudioSource batterySound;
 
         [Tooltip("Played when the flashlight glitch a little")]
         public AudioSource defectingflashlightSound;
@@ -68,10 +83,12 @@ namespace Common {
         [Tooltip("Played when the flashlight is turned off")]
         public AudioSource flashlightOffSound;
 
+        [Tooltip("Played when the flashlight is turned on")]
+        public AudioSource flashlightOnSound;
+
         private readonly Dictionary<int, GameObject> _inRangeObjectById = new Dictionary<int, GameObject>();
         private float _batteryLevel = InitialBatteryLevel;
-
-        private IEnumerator consume;
+        private Coroutine _consumeCoroutine;
 
         private void Start() {
             // Adjust collider to fit the light
@@ -82,25 +99,25 @@ namespace Common {
             flashlightCollider.direction = 2;
 
             // Start battery level decrease
-
-            consume = Consume();
-
-            StartCoroutine(consume);
+            _consumeCoroutine = StartCoroutine(Consume());
         }
 
-        public void TurnOnOff()
-        {
+        public void TurnOnOff() {
             flashlightLight.enabled = !flashlightLight.enabled;
-            if(flashlightLight.enabled)
-            {
-                StartCoroutine(consume);
-            } else
-            {
-                StopCoroutine(consume);
+            if (flashlightLight.enabled) {
+                _consumeCoroutine = StartCoroutine(Consume());
+                flashlightOnSound.Play();
+            } else {
+                StopCoroutine(_consumeCoroutine);
+                flashlightOffSound.Play();
             }
         }
 
         private void OnTriggerEnter(Collider other) {
+            if (!flashlightLight.enabled) {
+                return;
+            }
+
             var triggerObject = other.gameObject;
 
 #if UNITY_EDITOR
@@ -115,6 +132,10 @@ namespace Common {
         }
 
         private void OnTriggerExit(Collider other) {
+            if (!flashlightLight.enabled) {
+                return;
+            }
+
             var triggerObject = other.gameObject;
 
 #if UNITY_EDITOR
@@ -132,6 +153,10 @@ namespace Common {
         /// Catch items in spotlight
         /// </summary>
         public void CatchItems() {
+            if (!flashlightLight.enabled) {
+                return;
+            }
+
             var items = new List<AItem>();
 
             // Iterate over a copy to be able to remove entries
@@ -219,6 +244,8 @@ namespace Common {
 #if UNITY_EDITOR
             Debug.Log($"Battery: {_batteryLevel}%");
 #endif
+            batterySound.Play();
+
             Destroy(itemGameObject);
         }
 
@@ -226,35 +253,56 @@ namespace Common {
         /// Consume the given sonar item
         /// </summary>
         /// <param name="item">Item</param>
-        public void Consume(SonarItem item)
-        {
-            
+        public void Consume(SonarItem item) {
+            var itemGameObject = item.gameObject;
+
+            if (itemGameObject == null) {
+                return;
+            }
+
+            if (sonarSound != null) sonarSound.Play();
+
+            sonarTrigger.Invoke();
+
+            Destroy(itemGameObject);
         }
 
         /// <summary>
         /// Consume the given flash item
         /// </summary>
         /// <param name="item">Item</param>
-        public void Consume(FlashItem item)
-        {
-            StartCoroutine(Flash(item));   
+        public void Consume(FlashItem item) {
+            StartCoroutine(Flash(item));
         }
 
-        IEnumerator Flash(AItem item)
-        {
-            float intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity;
-            Color color = GameObject.Find("Moon Light").GetComponent<Light>().color;
+        /// <summary>
+        /// Coroutine to create a flash
+        /// </summary>
+        private IEnumerator Flash(AItem item) {
 
-            GameObject.Find("Moon Light").GetComponent<Light>().intensity = GameObject.Find("Moon Light").GetComponent<Light>().intensity * 50;
-            GameObject.Find("Moon Light").GetComponent<Light>().color = Color.white;
+            Light moonLight = GameObject.Find("Moon Light").GetComponent<Light>();
+
+            float intensity = moonLight.intensity;
+            Color color = moonLight.color;
+
+            flashSound.Play();
+
+            UpdateLight(moonLight, Color.white, moonLight.intensity * 50);
 
             yield return new WaitForSeconds(0.5f);
 
-            GameObject.Find("Moon Light").GetComponent<Light>().intensity = intensity;
-            GameObject.Find("Moon Light").GetComponent<Light>().color = color;
+            UpdateLight(moonLight, color, intensity);
 
             Destroy(item);
+        }
 
+        /// <summary>
+        /// Update given light intensity and color
+        /// </summary>
+        private void UpdateLight(Light light, Color color, float intensity)
+        {
+            light.intensity = intensity;
+            light.color = color;
         }
 
         /// <summary>

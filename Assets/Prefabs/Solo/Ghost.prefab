@@ -85,6 +85,7 @@ MonoBehaviour:
   - {fileID: 8232795975760285767, guid: 8531f9fcbdaeaf049a7314e56bcc319a, type: 3}
   - {fileID: 8232795975760285767, guid: 53fd0140930b54549861afb8f349c95c, type: 3}
   - {fileID: 8232795975760285767, guid: 2427afc4e55b004478bc8da5ef8a54ea, type: 3}
+  luck: 90
 --- !u!114 &-606573573284532152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timing: 3
   killValue: 5
-  speed: 2
   minX: -10
   minY: 0
   minZ: -10
@@ -109,7 +109,6 @@ MonoBehaviour:
   ghostSound: {fileID: 1739835455155375341}
   dieSound: {fileID: 4063088903214927538}
   sonarGhost: {fileID: -5658056597105702792}
-  smoothTime: 0.5
 --- !u!114 &-8644708224471170684
 MonoBehaviour:
   m_ObjectHideFlags: 0

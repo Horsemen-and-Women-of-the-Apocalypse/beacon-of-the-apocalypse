@@ -337,6 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1df1ae37ea0103488b57c40ea286adb, type: 3}
+--- !u!4 &365268713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 365268712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &554402018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1130901445952964194, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
@@ -1830,6 +1835,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 365268713}
   - {fileID: 1874127516}
   m_Father: {fileID: 229656692}
   m_RootOrder: 0
@@ -2098,6 +2104,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1011898367976486068, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1130901445952964194, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
       propertyPath: XRLine
       value: 
@@ -2142,6 +2152,10 @@ PrefabInstance:
       propertyPath: sceneChanger
       value: 
       objectReference: {fileID: 1288141748}
+    - target: {fileID: 5928375303580526289, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5928375303580526291, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

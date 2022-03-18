@@ -20,6 +20,7 @@ namespace Multi
         {
             title.text = "Exercise paused";
             buttons.SetActive(true);
+            instructionText.SetActive(false);
         }
         
         public override void Resume()

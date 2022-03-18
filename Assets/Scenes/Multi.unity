@@ -2100,6 +2100,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1091704644183533474, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1130901445952964194, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
       propertyPath: XRLine
       value: 
@@ -2116,13 +2120,9 @@ PrefabInstance:
       propertyPath: sceneChanger
       value: 
       objectReference: {fileID: 1288141748}
-    - target: {fileID: 4139355141545830266, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
+    - target: {fileID: 1962259967239131627, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540697299276989058, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
-      propertyPath: m_Lightmapping
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4983102107879793158, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
       propertyPath: m_IsActive
@@ -2235,6 +2235,10 @@ PrefabInstance:
     - target: {fileID: 5928375303580526291, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409995106567477013, guid: f7fd9838252047a43a15df0ce6655386, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7fd9838252047a43a15df0ce6655386, type: 3}

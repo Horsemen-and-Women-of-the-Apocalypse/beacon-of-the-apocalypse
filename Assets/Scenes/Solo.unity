@@ -1055,10 +1055,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2133794295}
-    - target: {fileID: 823183142996567718, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 823183142996567719, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1179,10 +1175,6 @@ PrefabInstance:
       propertyPath: backgroundMusic
       value: 
       objectReference: {fileID: 1199152845}
-    - target: {fileID: 866438108987299810, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1688733883391940831, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -1193,6 +1185,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2202859665545561656, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470227867157692196, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2775451581958259113, guid: 85a13a392a7cab144a258a0610459bc9, type: 3}

@@ -25,16 +25,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199868934389499519}
-  m_LocalRotation: {x: 0.34429276, y: -0.74106354, z: 0.18537918, w: 0.5458224}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5743569}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_Children: []
   m_Father: {fileID: 6699213396006090240}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3106416, y: 0.7695117}
+  m_AnchoredPosition: {x: -3.76, y: 1.82}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7360399401001628922
@@ -282,9 +282,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3624441606928712366}
-  m_LocalRotation: {x: 0.34429276, y: -0.74106354, z: 0.18537918, w: 0.5458224}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5657729}
-  m_LocalScale: {x: 0.0025, y: 0.0025000006, z: 0.0025000006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3299913074886257277}
   - {fileID: 2297974564820636550}
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3122364, y: 0.7634166}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4889813761892809230
@@ -607,7 +607,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 170, y: 20, z: 1}
-  m_Center: {x: -0.19842876, y: -1.528061, z: -0.0000726339}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5997890605576988999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,16 +967,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7379748523942974702}
-  m_LocalRotation: {x: 0.34429276, y: -0.74106354, z: 0.18537918, w: 0.5458224}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5712353}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_Children: []
   m_Father: {fileID: 6699213396006090240}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.30192643, y: 0.77691746}
+  m_AnchoredPosition: {x: -3.43, y: 6.45}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7684588568310591432
@@ -1274,16 +1274,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8179420850937758800}
-  m_LocalRotation: {x: 0.34429276, y: -0.74106354, z: 0.18537918, w: 0.5458224}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5657729}
-  m_LocalScale: {x: 0.0025, y: 0.0025000006, z: 0.0025000006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6699213396006090240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.31223607, y: 0.76341534}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8692078758543686505
@@ -1313,7 +1313,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8692078758543686505}
-  m_LocalRotation: {x: 0.34429276, y: -0.7410635, z: 0.18537915, w: 0.5458224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.2591486}
   m_LocalScale: {x: 0.0025000002, y: 0.0025000004, z: 0.0025000004}
   m_Children:
@@ -1345,7 +1345,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &5813720635113394065
 MonoBehaviour:

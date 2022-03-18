@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Function called when an item is catched
+    /// Function called when an item is caught
     /// </summary>
     /// <param name="items"></param>
     public void Catch(IList<AItem> items)

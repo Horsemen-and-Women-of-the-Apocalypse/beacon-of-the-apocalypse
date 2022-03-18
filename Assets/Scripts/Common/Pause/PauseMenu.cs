@@ -81,7 +81,6 @@ namespace Common.Pause
             _sounds = GetComponentsInChildren<AudioSource>();
             foreach (var sound in _sounds)
             {
-                Debug.Log(sound.name);
                 sound.ignoreListenerPause = true;
             }
         }
@@ -103,7 +102,7 @@ namespace Common.Pause
         /// <summary>
         /// Play random sound
         /// </summary>
-        private void PlayButtonSound()
+        protected void PlayButtonSound()
         {
             GetSound(Random.value < BUTTON_SOUND_PROB ? BUTTON_SOUND : BUTTON_CURSED_SOUND).Play();
         }
@@ -111,9 +110,18 @@ namespace Common.Pause
         /// <summary>
         /// Disable pause and resume game
         /// </summary>
-        public void Resume()
+        public virtual void Resume()
         {
             PlayButtonSound();
+
+            Unpause();
+        }
+
+        /// <summary>
+        /// Common unpause behavior
+        /// </summary>
+        protected void Unpause()
+        {
             sheet.StartFollowing();
             AudioListener.pause = false;
             
@@ -125,6 +133,7 @@ namespace Common.Pause
             
             RenderSettings.skybox = _skybox;
             Time.timeScale = 1f;
+            
             pauseMenuUI.SetActive(false);
             isGamePaused = false;
         }
